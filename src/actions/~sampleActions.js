@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import * as Actions from './actionTypes';
 
 function url() {
 	return 'localhost:8080';
@@ -6,7 +6,7 @@ function url() {
 
 export function receiveStuff(json) {
 	// Just some specified format
-	return {type: types.RECEIVE_STUFF, stuff: json.stuff};
+	return {type: Actions.RECEIVE_STUFF, stuff: json.stuff};
 }
 
 export function fetchStuff() {

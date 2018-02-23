@@ -1,0 +1,30 @@
+
+* Develop datastructures
+** post
+** imageList
+** 
+
+
+* TODO Creating components
+** DONE Post
+** DONE PostList
+** DONE FilteredPostLits
+** TODO ImageList
+*** TODO Image
+
+** TODO ContactForm
+** TODO OrderForm
+
+
+* DONE Upgrading
+** TODO Post
+*** TODO Adding ImageList
+*** TODO Adding orderClick
+	We would like to buy some of the products
+	shown on the post
+
+
+* TODO Testing
+** DONE Test posts filter
+** DONE Test likePost action
+** TODO App rendering (find out how)

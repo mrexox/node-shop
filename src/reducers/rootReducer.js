@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import stuff from './stuffReducer';
+import posts from './postReducer';
+import menu from './menuReducer';
 
 const rootReducer = combineReducers({
-	stuff
+	posts,
+	menu 
 });
 
 export default rootReducer;
