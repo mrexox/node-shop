@@ -17,8 +17,8 @@ export default function posts(state=[], action) {
 			}
 			return post;
 		});
-	case FETCH_POSTS:
-
+		case FETCH_POSTS:
+			return state; // TODO tobe continued
 	default:
 		return state;
 	}

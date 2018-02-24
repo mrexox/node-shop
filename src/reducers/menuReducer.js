@@ -1,8 +1,6 @@
 import { CHANGE_MENU } from '../actions/actionTypes';
 //import { changeMenu } from '../actions/menuActions';
-import { MenuItems } from '../components/Menu';
-
-const { HOME, ABOUT, ALL_POSTS } = MenuItems;
+import { HOME } from '../components/Constants';
 
 export default function menu(state=HOME, action) {
 	switch (action.type) {

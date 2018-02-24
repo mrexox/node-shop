@@ -1,10 +1,9 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { likePost } from '../actions/postsActions';
 import PostList from './PostList';
 
 export const getFilteredPosts = (posts, filter) => {
-	if (filter == '' || typeof filter === undefined) {
+	if (filter === '' || typeof filter === undefined) {
 		return posts;
 	}
 	let tagRe = new RegExp(filter, 'i'); // ignoring case
@@ -15,7 +14,7 @@ export const getFilteredPosts = (posts, filter) => {
 
 const mapStateToProps = state => {
 	return {
-		posts: getFilteredPosts(state.posts, state.postsFilter)
+		posts: getFilteredPosts(state.posts, state.postFilter)
 	}
 }
 

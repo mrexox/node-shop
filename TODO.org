@@ -2,29 +2,57 @@
 * Develop datastructures
 ** post
 ** imageList
-** 
+   
 
 
-* TODO Creating components
-** DONE Post
-** DONE PostList
+
+* Creating components
+
 ** DONE FilteredPostLits
-** TODO ImageList
-*** TODO Image
+*** DONE PostList
+**** DONE Post
+***** DONE ImageList
+****** DONE Image
+
 
 ** TODO ContactForm
 ** TODO OrderForm
 
+** DONE PostFilter
+*** DONE add an action
+*** DONE add a reducer
+	
+** TODO Page
+** TODO HomePage
+** TODO AboutPage
+** TODO OrderPage	
+** TODO Page
+*** TODO HomePage
+*** TODO AboutPage
+*** TODO OrderPage
 
-* DONE Upgrading
+	
+
+* Upgrading
 ** TODO Post
-*** TODO Adding ImageList
+*** DONE Adding ImageList
 *** TODO Adding orderClick
 	We would like to buy some of the products
 	shown on the post
 
+** TODO Add Page to App component
+   Render Page in case of `menu' state
+** TODO Add HomePage, AboutPage... to Page component
 
-* TODO Testing
+   
+* Testing
 ** DONE Test posts filter
 ** DONE Test likePost action
 ** TODO App rendering (find out how)
+
+
+* Styles
+** TODO Add styles to Menu
+** TODO Add styles to PostList
+** TODO Add styles to Post
+** TODO Add styles to PostFilter (Searchbar)

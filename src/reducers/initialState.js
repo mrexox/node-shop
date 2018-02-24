@@ -1,7 +1,7 @@
 // The state of an application without any fetching
 export default {
 	menu: 'HOME',
-	postsFilter: '',			// equivalent of ALL
+	postFilter: '',			// equivalent of ALL
 	posts : []
 };
 

@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
+import React from 'react';
+//import logo from '../logo.svg';
 import '../styles/App.css';
 
 import Menu from './Menu';
-import PostList from './PostList';
+import FilteredPostList from './FilteredPostList';
+import PostFilter from './PostFilter';
 
-const App = () => {
-		<div>
-		<Menu />
-		
-		</div>
-}
+const App = () => (
+	<div>
+	<Menu />
+	<PostFilter />
+	<FilteredPostList />
+	</div>
+);
 
 /*
 class App extends Component {
