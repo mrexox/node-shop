@@ -3,14 +3,14 @@ import React from 'react';
 import '../styles/App.css';
 
 import Menu from './Menu';
-import FilteredPostList from './FilteredPostList';
-import PostFilter from './PostFilter';
+import Page from './Page';
+import Footer from './Footer';
 
 const App = () => (
 	<div>
 	<Menu />
-	<PostFilter />
-	<FilteredPostList />
+	<Page />
+	<Footer />
 	</div>
 );
 

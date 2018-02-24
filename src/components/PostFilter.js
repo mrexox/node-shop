@@ -5,7 +5,7 @@ import { applyFilter } from '../actions/filterActions';
 const mapDispatchToProps = dispatch => {
 	return {
 		onChange: (e) => dispatch(applyFilter(e.target.value))
-	}
+	};
 };
 
 let PostFilter = ({ onChange }) => (	
@@ -13,7 +13,7 @@ let PostFilter = ({ onChange }) => (
 );
 
 PostFilter = connect(
-	state => {},
+	state => ({}),
 	mapDispatchToProps
 )(PostFilter);
 

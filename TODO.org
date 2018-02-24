@@ -14,22 +14,20 @@
 ***** DONE ImageList
 ****** DONE Image
 
-
-** TODO ContactForm
-** TODO OrderForm
-
 ** DONE PostFilter
 *** DONE add an action
 *** DONE add a reducer
 	
-** TODO Page
-** TODO HomePage
-** TODO AboutPage
-** TODO OrderPage	
-** TODO Page
-*** TODO HomePage
-*** TODO AboutPage
-*** TODO OrderPage
+** DONE Page
+*** DONE HomePage
+*** DONE AboutPage
+
+** DONE Footer
+
+** TODO ContactForm
+** TODO OrderForm
+
+** TODO OrderPage
 
 	
 
@@ -37,19 +35,22 @@
 ** TODO Post
 *** DONE Adding ImageList
 *** TODO Adding orderClick
+	
 	We would like to buy some of the products
 	shown on the post
 
-** TODO Add Page to App component
+** DONE Add Page to App component
+   
    Render Page in case of `menu' state
-** TODO Add HomePage, AboutPage... to Page component
+
+** DONE Add HomePage, AboutPage... to Page component
 
    
 * Testing
 ** DONE Test posts filter
 ** DONE Test likePost action
 ** TODO App rendering (find out how)
-
+   
 
 * Styles
 ** TODO Add styles to Menu

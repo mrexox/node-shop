@@ -4,7 +4,7 @@ import Post from './Post';
 
 // Every Post has all attributes given in props
 const PostList = ({ posts, onClick, likePost }) => (
-	<div class="post-list">
+	<div className="post-list">
 	{posts.map((post, index) => (
 		<Post
 		key={index}

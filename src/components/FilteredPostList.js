@@ -26,6 +26,8 @@ const mapDispatchToProps = dispatch => {
 	};
 }
 
+// I guess PostList may be used somewhere in an application
+// That's why I need FilteredPostList only for a HomePage
 const FilteredPostList = connect(
 	mapStateToProps,
 	mapDispatchToProps
