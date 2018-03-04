@@ -1,10 +1,11 @@
+#+TITLE: TODO for Elis project
+#+AUTHOR: Kiselev Valentin
 
 * Develop datastructures
-** post
-** imageList
-   
-
-
+** DONE post
+** DONE imageList
+*** TODO image
+** TODO order
 
 * Creating components
 
@@ -30,10 +31,10 @@
 ** TODO OrderPage
 
 	
-
 * Upgrading
 ** TODO Post
 *** DONE Adding ImageList
+
 *** TODO Adding orderClick
 	
 	We would like to buy some of the products
@@ -44,16 +45,32 @@
    Render Page in case of `menu' state
 
 ** DONE Add HomePage, AboutPage... to Page component
-
    
-* Testing
-** DONE Test posts filter
-** DONE Test likePost action
-** TODO App rendering (find out how)
-   
-
 * Styles
 ** TODO Add styles to Menu
 ** TODO Add styles to PostList
 ** TODO Add styles to Post
 ** TODO Add styles to PostFilter (Searchbar)
+
+
+* Bugs
+
+
+* Tasks
+** TODO Write basic API
+*** DONE Get / -> get all posts
+   {
+       posts: [...]
+   }
+
+*** TODO Post /authenticate -> try to autorize
+   {
+       login: "login",
+	   password: "password"
+   }
+
+** DONE Write SQL inserts tests
+** TODO Test basic API
+** TODO Create datastructure for Order
+** TODO Create all components
+** TODO Make upgrading tasks

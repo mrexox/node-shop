@@ -5,8 +5,8 @@ import postFilter from './filterReducer';
 
 const rootReducer = combineReducers({
 	posts,
-	menu,
-	postFilter
+	postFilter,
+	menu
 });
 
 export default rootReducer;

@@ -1,0 +1,4 @@
+* Vars
+** ELIS_DB
+** ELIS_PASSWORD
+** ELIS_USER
