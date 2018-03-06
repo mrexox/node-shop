@@ -1,10 +1,10 @@
 const mariasql = require('mariasql');
 const utils = require('../utils');
-let db = new mariasql({
+const db = new mariasql({
  	host: '127.0.0.1',
- 	user: process.env.ELIS_USER,
- 	password: process.env.ELIS_PASSWORD,
-	db: process.env.ELIS_DB
+ 	user: process.env.SHOP_USER,
+ 	password: process.env.SHOP_PASSWORD,
+	db: process.env.SHOP_DB
 	//port: 3306
 });
 
