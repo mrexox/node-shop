@@ -35,8 +35,8 @@ app.post('/authenticate', (req, res, next) => {
 	let login = req.body.login;
 	let pass = req.body.pass;
 	db.authenticate(login, pass, result => {
-		if (result) { return res.json({token: 'lalalatoken'}); }
-		else { return res.json({token: 'no'}); }
+		if (result) { return res.json({token: utils.generateToken()}); }
+		else { return res.json({token: false}); }
 	});
 });
 
