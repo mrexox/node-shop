@@ -57,8 +57,27 @@ function getAllPosts(callback) {
 		}).then(posts => {
 			callback(posts);
 		});
-	}).catch( err => {console.log(err);}); // FIXME Log error the write way
+	}).catch( err => {console.log(err);}); // FIXME Log error the right way
+}
+
+const tryToAuthenticate = (login, pass_hash) => {
+	return new Promise((resolve, reject) => {
+		db.query(utils.getPassHash, {login: login}, (err, rows) => {
+			if (err) { return reject(err); }
+			if (rows.length == 0) { return resolve(false); }
+			if (rows[0].pass_hash != pass_hash) { return resolve(false); }
+			return resolve(true);
+		});
+	});
+};
+
+function authenticate(login, pass, callback) {
+	let pass_hash = utils.hash(pass);
+	return tryToAuthenticate(login, pass_hash)
+		.then(result => callback(result))
+		.catch(err => console.log(err)); // FIXME Log errors the right way
 }
 
 module.exports.dbCLient = db;
 module.exports.getAllPosts = getAllPosts;
+module.exports.authenticate = authenticate;

@@ -1,4 +1,5 @@
 'use strict';
+
 const express = require('express');
 const utils = require('./utils');
 const bodyParser = require('body-parser');
@@ -22,16 +23,21 @@ app.get('/', (req, res, next) => {
 	});
 });
 
+// To serve static files (images)
 app.get('/file/*', (req, res, next) => {
 	let filename = req.params[0];
+	res.send(filename);
 	// TODO smth with this
 });
 
 // Trying to authenticate
 app.post('/authenticate', (req, res, next) => {
-	let user = req.body.user;
+	let login = req.body.login;
 	let pass = req.body.pass;
-	res.send(user + ' ' + pass);
+	db.authenticate(login, pass, result => {
+		if (result) { return res.json({token: 'lalalatoken'}); }
+		else { return res.json({token: 'no'}); }
+	});
 });
 
 // Starting server

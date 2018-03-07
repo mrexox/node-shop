@@ -8,3 +8,4 @@ module.exports.hash = function(str) {
 module.exports.allPosts = 'SELECT * FROM post';
 module.exports.tagsOfPost = 'SELECT name FROM tag WHERE post_id = :post_id';
 module.exports.imagesOfPost = 'SELECT url FROM image WHERE post_id = :post_id';
+module.exports.getPassHash = 'SELECT pass_hash FROM admin WHERE login = :login';
