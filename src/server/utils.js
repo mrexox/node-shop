@@ -28,7 +28,7 @@ function authenticate(token) {
 module.exports.authenticate = authenticate;
 module.exports.hash = hash;
 module.exports.generateToken = generateToken;
-module.exports.allPosts = 'SELECT * FROM post';
-module.exports.tagsOfPost = 'SELECT name FROM tag WHERE post_id = :post_id';
-module.exports.imagesOfPost = 'SELECT url FROM image WHERE post_id = :post_id';
+module.exports.allPosts = 'SELECT post_id id, title, htmlText, likes FROM post';
+module.exports.tagsOfPost = 'SELECT name FROM post_tag WHERE post_id = :post_id';
+module.exports.imagesOfPost = 'SELECT url FROM post_image WHERE post_id = :post_id';
 module.exports.getPassHash = 'SELECT pass_hash FROM admin WHERE login = :login';
