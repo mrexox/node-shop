@@ -3,8 +3,8 @@
 const express = require('express');
 const utils = require('./utils');
 const bodyParser = require('body-parser');
-const db = require('./db/utils');
-
+const posts = require('./posts');
+const auth = require('./authentication');
 const app = express();
 
 // Middleware
@@ -18,7 +18,7 @@ app.set('json replacer', asIs);
 
 // Just fetching all posts
 app.get('/', (req, res, next) => {
-	db.getAllPosts((posts) => {
+	posts.getAllPosts((posts) => {
 		res.json({posts: posts});
 	});
 });
@@ -34,8 +34,8 @@ app.get('/file/*', (req, res, next) => {
 app.post('/authenticate', (req, res, next) => {
 	let login = req.body.login;
 	let pass = req.body.pass;
-	db.authenticate(login, pass, result => {
-		if (result) { return res.json({token: utils.generateToken()}); }
+	auth.authenticate(login, pass, result => {
+		if (result) { return res.json({token: auth.generateToken()}); }
 		else { return res.json({token: false}); }
 	});
 });

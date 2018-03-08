@@ -8,5 +8,7 @@ function authenticate() {
 		-d '{"login": "ian", "pass": "admin"}' \
 		localhost:8080/authenticate 
 }
-
+function test() {
+	authenticate
+}
 $1
