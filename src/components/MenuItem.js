@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/MenuItem.css';
 
 import { HOME, ABOUT, ALL_POSTS } from './Constants';
 
@@ -13,7 +14,7 @@ function translateItem(item) {
 }
 // Make it more complicated if needed
 const MenuItem = ({ item, onClick }) => (
-	<div calss="menu-item"
+	<div className="menu-item"
 	onClick={onClick} >
 	{translateItem(item)}
 	</div>

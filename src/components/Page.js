@@ -1,22 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import '../styles/Page.css';
 import { HOME, ABOUT, ALL_POSTS } from './Constants';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import AllPostsPage from './AllPostsPage';
 
 let Page = ({ menu }) => {
+	let page;
 	switch (menu) {
 		case HOME:
-			return (<HomePage />);
+			page = (<HomePage />); break;
 		case ABOUT:
-			return (<AboutPage />);
+			page = (<AboutPage />); break;
 		case ALL_POSTS:
-			return (<AllPostsPage />);
+			page = (<AllPostsPage />); break;
 		default:
-			return (<HomePage />);
+			page = (<HomePage />);
 	}
+	return (
+		<div className="page">
+		{page}
+		</div>
+	);
 };
 
 const mapStateToProps = state => {

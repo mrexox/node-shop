@@ -19,7 +19,7 @@ unless ( -e VERSIONS ) {
 my $ver = &curr_ver;
 my $filever;
 
-while (glob "*.sql") {
+while (sort glob "*.sql") {
 	($filever) = /(\d+\.\d+).*\.sql/; # two numbers and .sql suffix required
 	next unless $filever gt $ver; # skipping already migrated files
 	execute_migration($_);

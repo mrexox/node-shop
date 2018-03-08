@@ -1,9 +1,9 @@
 import React from 'react';
-
+import '../styles/Footer.css';
 // No props yet
 const Footer = () => (
 	<footer>
-	Elis Type (C) 2018
+	Shop by Ian (C) 2018
 	</footer>
 );
 

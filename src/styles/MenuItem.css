@@ -1,0 +1,9 @@
+.menu-item {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.menu-item:hover {
+	color: #999;
+}

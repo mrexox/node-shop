@@ -21,7 +21,8 @@
 ** DONE Write SQL inserts tests
 ** DONE Test basic API
 ** DONE Add token checkin on administrative operation
-** TODO Create datastructure for Order
+** DONE Create datastructure for Order
+** TODO Make HOME page with styles
 ** TODO Add administrative operations
 ** TODO Create all components
 ** TODO Make upgrading tasks
