@@ -26,7 +26,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"mocha": "./node_modules/.bin/mocha --compilers js:babel-core/register"
+		"mocha": "./node_modules/.bin/mocha --compilers js:babel-core/register",
+		"migrate": "./src/server/db/migrations/migrate"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.0.0-beta.40",
