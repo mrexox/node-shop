@@ -6,22 +6,23 @@
 
 
 * Tasks
-TODO Write basic API
-DONE Get / -> get all posts
+** DONE Write basic API
+** DONE Get / -> get all posts
    {
        posts: [...]
    }
 
-DONE Post /authenticate -> try to autorize
+** DONE Post /authenticate -> try to autorize
    {
        login: "login",
 		   password: "password"
    }
 
-DONE Write SQL inserts tests
-DONE Test basic API
-TODO Add token checkin on administrative operation
-TODO Add administrative operations
-TODO Create datastructure for Order
-TODO Create all components
-TODO Make upgrading tasks
+** DONE Write SQL inserts tests
+** DONE Test basic API
+** DONE Add token checkin on administrative operation
+** TODO Create datastructure for Order
+** TODO Add administrative operations
+** TODO Create all components
+** TODO Make upgrading tasks
+** TODO Serve static files
