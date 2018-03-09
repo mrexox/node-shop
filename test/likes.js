@@ -1,6 +1,6 @@
 import assert from 'assert';
-import configureStore from '../src/store/configureStore';
-import { likePost } from '../src/actions/postsActions';
+import configureStore from '../src/client/store/configureStore';
+import { likePost } from '../src/client/actions/postsActions';
 
 let store = configureStore({
 	menu: 'HOME',

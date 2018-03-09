@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { getFilteredPosts } from '../src/components/FilteredPostList';
+import { getFilteredPosts } from '../src/client/components/FilteredPostList';
 
 let posts = [
 	{id: 1, tags: ['1', 'asd', 'test']	},
