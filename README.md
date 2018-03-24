@@ -35,6 +35,7 @@
 
 Чтобы собрать все зависимости желательно установить *yarn*. 
 > sudo apt-get install yarn **# ubuntu/debian/elementary**
+
 > sudo yum -y install yarn **# centos/fedora**
 
 Далее для установки зависимостей в корне папки.
