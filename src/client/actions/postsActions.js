@@ -1,8 +1,29 @@
-import { LIKE_POST } from './actionTypes';
+import fetch from 'cross-fetch';
+import { FETCH_POSTS_END,
+		 FETCH_POSTS_START,
+		 FETCH_POSTS_ERROR,
+		 LIKE_POST } from './actionTypes';
 
+export function requestPosts() {
+	return {type: FETCH_POSTS_START};
+}
+
+export function fetchError(place) {
+	return {type: FETCH_POSTS_ERROR, place};
+}
+
+export function recievePosts(posts) {
+	return {type: FETCH_POSTS_END, posts: posts.posts};
+}
 
 export function fetchPosts() {
-	throw new Error('Not implemented');
+	return dispatch => {
+		dispatch(requestPosts());
+		return fetch('http://localhost:8080/')
+			.then(response => response.json(),
+				  error => dispatch(fetchError('posts')))
+			.then(json => dispatch(recievePosts(json)));
+	};
 }
 
 export function likePost(id) {

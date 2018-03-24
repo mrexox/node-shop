@@ -3,8 +3,10 @@
 export default {
 	menu: 'HOME',
 	postFilter: '',			// equivalent of ALL
-	isFetching: false,      // while asynchronous requrest
-	posts : []
+	posts : {
+		isFetching: false,      // while asynchronous requrest
+		data: []
+	}
 };
 
 /*

@@ -5,6 +5,8 @@
 	"dependencies": {
 		"bluebird": "^3.5.1",
 		"body-parser": "^1.18.2",
+		"cors": "^2.8.4",
+		"cross-fetch": "^2.1.0",
 		"express": "^4.16.2",
 		"mariasql": "^0.2.6",
 		"mysql": "^2.15.0",
@@ -22,7 +24,7 @@
 		"seed": "node ./src/server/db/seed.js",
 		"react": "react-scripts start",
 		"server": "node ./src/server/server.js",
-		"start": "concurrent \"yarn server\" \"yarn react\"",
+		"start": "concurrently \"yarn server\" \"yarn react\"",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",

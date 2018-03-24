@@ -5,7 +5,7 @@ import Post from './Post';
 // Every Post has all attributes given in props
 const PostList = ({ posts, onClick, likePost }) => (
 	<div className="post-list">
-	{posts.map((post, index) => (
+	{posts.data.map((post, index) => (
 		<Post
 		key={index}
 		{...post}
@@ -16,12 +16,15 @@ const PostList = ({ posts, onClick, likePost }) => (
 )
 
 PostList.propTypes = {
-	posts: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.number,
-			likes: PropTypes.number.isRequired
-		})
-	).isRequired,
+	posts: PropTypes.shape({
+		isFetching: PropTypes.bool.isRequired,
+		data: PropTypes.arrayOf(
+			PropTypes.shape({
+				id: PropTypes.string,
+				likes: PropTypes.string.isRequired
+			})
+		).isRequired
+	}),
 	onClick: PropTypes.func,
 	likePost: PropTypes.func.isRequired
 }

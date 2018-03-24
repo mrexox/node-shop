@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import ImageList from './ImageList';
 
 const Post = ({ id, likes, imageList, htmlText, tags, onClick, likePost }) => (
-	<div class="post" onClick={onClick}>
+	<div className="post" onClick={onClick}>
 	<ImageList images={imageList} />
-	<div class="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
-	<span class="post__likes" onClick={likePost}>{likes} Loved it!</span>
-	<div class="post__tags">
-	{tags.map((name) => (
-		<span class="post__tag">{name}</span>
+	<div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
+	<span className="post__likes" onClick={likePost}>{likes} Loved it!</span>
+	<div className="post__tags">
+	{tags.map((name, index) => (
+		<span key={index} className="post__tag">{name}</span>
 	))}
 	</div>
 	</div>
@@ -17,8 +17,8 @@ const Post = ({ id, likes, imageList, htmlText, tags, onClick, likePost }) => (
 
 // See reducers/initialStates
 Post.propTypes = {
-	id: PropTypes.number,
-	likes: PropTypes.number.isRequired,
+	id: PropTypes.string,
+	likes: PropTypes.string.isRequired,
 	htmlText: PropTypes.string.isRequired,
 	tags: PropTypes.arrayOf(
 		PropTypes.string

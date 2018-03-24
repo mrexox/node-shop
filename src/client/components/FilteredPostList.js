@@ -8,7 +8,8 @@ export const getFilteredPosts = (posts, filter) => {
 	}
 	let tagRe = new RegExp(filter, 'i'); // ignoring case
 	// Finds if any tag matches the filter, given in regexp
-	return posts.filter((p) => (p.tags.find((tag) => tag.match(tagRe))));
+	posts.data = posts.data.filter((p) => (p.tags.find((tag) => tag.match(tagRe))));
+	return posts;
 }
 
 

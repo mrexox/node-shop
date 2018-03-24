@@ -5,12 +5,14 @@ const utils = require('./utils');
 const bodyParser = require('body-parser');
 const posts = require('./posts');
 const auth = require('./authentication');
+const cors = require('cors');
 const app = express();
 
 // Middleware
 app.use(express.json()); // making sure of JSON support
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(cors());
 // Configuration
 const asIs = (i, val) => val;
 app.set('json spaces', 2);
