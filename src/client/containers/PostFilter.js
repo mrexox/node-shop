@@ -4,16 +4,22 @@ import { applyFilter } from '../actions/filterActions';
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onChange: (e) => dispatch(applyFilter(e.target.value))
+		onChange: (e) =>  dispatch(applyFilter(e.target.value))
 	};
 };
 
-let PostFilter = ({ onChange }) => (	
-	<input onChange={onChange} />
+const mapStateToProps = state => {
+	return {
+		postFilter: state.postFilter
+	};
+};
+
+let PostFilter = ({ onChange, postFilter }) => (	
+	<input onChange={onChange} value={postFilter}/>
 );
 
 PostFilter = connect(
-	state => ({}),
+	mapStateToProps,
 	mapDispatchToProps
 )(PostFilter);
 

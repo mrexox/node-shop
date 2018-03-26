@@ -8,20 +8,24 @@ import { FETCH_POSTS_END,
 export default function posts(state={}, action) {
 	switch (action.type) {
 		case LIKE_POST:
-			return state.data.map((post, index) => {
+			console.log(state.data);
+			console.log(state);
+			let data = state.data.map((post, index) => {
 				if (post.id === action.id) {
 					/* I have liked a post
 					 * Post:  { .., likes: 15, ... }
 					 * TODO What about sending an AJAX to a server?
 					 */
 					return Object.assign({}, post, {
-						likes: post.likes+1
+						// parseInt(number, radix)
+						likes: (parseInt(post.likes, 10)+1).toString()
 					});
 				}
 				return post;
 			});
+			return Object.assign({}, state, {data: data});
 		case FETCH_POSTS_END:
-			console.log(action.posts); // Log fetched posts
+			// console.log(action.posts); // Log fetched posts
 			return Object.assign({}, {
 				data: action.posts,
 				isFetching: false

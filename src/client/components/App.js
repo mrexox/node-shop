@@ -1,9 +1,10 @@
+
 import React from 'react';
 //import logo from '../logo.svg';
 import '../styles/App.css';
 
-import Menu from './Menu';
-import Page from './Page';
+import Menu from '../containers/Menu';
+import Page from '../containers/Page';
 import Footer from './Footer';
 
 const App = () => (

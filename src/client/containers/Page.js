@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../styles/Page.css';
-import { HOME, ABOUT, ALL_POSTS } from './Constants';
-import HomePage from './HomePage';
-import AboutPage from './AboutPage';
-import AllPostsPage from './AllPostsPage';
+import { HOME, ABOUT, ALL_POSTS } from '../Constants';
+import HomePage from '../components/HomePage';
+import AboutPage from '../components/AboutPage';
+import AllPostsPage from '../components/AllPostsPage';
 
 let Page = ({ menu }) => {
 	let page;

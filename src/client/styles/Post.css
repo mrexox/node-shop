@@ -1,0 +1,19 @@
+.post {
+	display: inline-block;
+	max-width: 50%;
+}
+
+.post img {
+	width: 100%;
+}
+
+.post__tags {
+	color: red;
+}
+
+.post__tag {
+	dispay: inline-block;
+	padding: 5px 10px 5px 10px;
+	background-color: #ccc;
+	border-radius: 20px;
+}

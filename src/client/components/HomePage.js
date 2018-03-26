@@ -1,6 +1,6 @@
 import React from 'react';
-import PostFilter from './PostFilter';
-import FilteredPostList from './FilteredPostList';
+import PostFilter from '../containers/PostFilter';
+import FilteredPostList from '../containers/FilteredPostList';
 
 const HomePage = () => (
 	<div>

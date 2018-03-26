@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImageList from './ImageList';
+import '../styles/Post.css';
 
-const Post = ({ id, likes, imageList, htmlText, tags, onClick, likePost }) => (
-	<div className="post" onClick={onClick}>
+const Post = ({ id, likes, imageList, htmlText, tags, likePost }) => (
+	<div className="post">
 	<ImageList images={imageList} />
 	<div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
 	<span className="post__likes" onClick={likePost}>{likes} Loved it!</span>
@@ -28,7 +29,6 @@ Post.propTypes = {
 			url: PropTypes.string.isRequired
 		}).isRequired
 	),
-	onClick: PropTypes.func.isRequired,
 	likePost: PropTypes.func.isRequired
 };
 

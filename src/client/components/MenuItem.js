@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/MenuItem.css';
 
-import { HOME, ABOUT, ALL_POSTS } from './Constants';
+import { HOME, ABOUT, ALL_POSTS } from '../Constants';
 
 function translateItem(item) {
 	switch (item) {
