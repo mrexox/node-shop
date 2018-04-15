@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { applyFilter } from '../actions/filterActions';
+import '../styles/PostFilter.css';
 
 const mapDispatchToProps = dispatch => {
 	return {
@@ -15,7 +16,7 @@ const mapStateToProps = (state) => { // TODO accept { filter }
 };
 
 let PostFilter = ({ onChange, postFilter }) => (
-	<input onChange={onChange} value={postFilter}/>
+	<input onChange={onChange} value={postFilter} className="filter"/>
 );
 
 PostFilter = connect(
