@@ -5,6 +5,9 @@ const utils = require('./utils');
 const db = dbManager.db;
 const scripts = dbManager.scripts;
 
+/* This only checks if a user is in database
+ * and his password hash equals given one.
+ */
 const tryToAuthenticate = (login, pass_hash) => {
 	return new Promise((resolve, reject) => {
 		db.query(scripts.getPassHash, {login: login}, (err, rows) => {
@@ -16,6 +19,8 @@ const tryToAuthenticate = (login, pass_hash) => {
 	});
 };
 
+/* Public interface to authenticate users.
+ */
 function authenticate(login, pass, callback) {
 	let pass_hash = utils.hash(pass);
 	return tryToAuthenticate(login, pass_hash)
@@ -25,7 +30,10 @@ function authenticate(login, pass, callback) {
 
 
 const tokenQueue = []; // the list of tokens available
-// Generating a unique token and adding it to the tokenQueue
+
+/* Generating a unique token and adding it to the tokenQueue
+ * Public interface.
+ */
 function generateToken() {
 	let token = utils.hash(Date.now().toString());
 	tokenQueue.push(token);
@@ -36,8 +44,9 @@ function generateToken() {
 	return token;
 };
 
-// Check if the token is in there
-// For administration
+/* Check if the token is in there.
+ * Public interface.
+ */
 function checkToken(token) {
 	if (tokenQueue.indexOf(token) != -1) {
 		return true;
