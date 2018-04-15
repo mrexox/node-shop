@@ -1,5 +1,5 @@
 'use strict';
-const dbManager = require('./db/db');
+const dbManager = require('./db');
 const utils = require('./utils');
 
 const db = dbManager.db;

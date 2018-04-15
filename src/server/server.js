@@ -1,5 +1,6 @@
 'use strict';
 
+const config = require('./config');
 const express = require('express');
 const utils = require('./utils');
 const bodyParser = require('body-parser');
@@ -43,6 +44,6 @@ app.post('/authenticate', (req, res, next) => {
 });
 
 // Starting server
-app.listen(8080, () => {
-	console.log('Listening on 8080');
+app.listen(config.get("server:port"), () => {
+	console.log('Listening on ' + config.get("server:port"));
 });

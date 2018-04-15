@@ -1,6 +1,6 @@
 'use strict';
 const Promise = require('bluebird');
-const dbManager = require('./db/db');
+const dbManager = require('./db');
 
 const db = dbManager.db;
 const scripts = dbManager.scripts;
