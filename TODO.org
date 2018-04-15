@@ -22,7 +22,7 @@
 ** DONE Test basic API
 ** DONE Add token checkin on administrative operation
 ** DONE Create datastructure for Order
-** TODO Make HOME page with styles
+** DONE Make HOME page with styles
 ** TODO Add administrative operations
 ** TODO Create all components
 ** TODO Make upgrading tasks

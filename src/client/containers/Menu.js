@@ -8,33 +8,17 @@ import { changeMenu } from '../actions/menuActions';
 
 let Menu = ({ dispatch, chosen }) => (
 	<div className="menu">
-	<NavLink
-    to="/home"
-       activeStyle={ {
-	     textDecoration: 'none',
-		 color: 'black'
-       }}
-	>
+
+	<NavLink to="/home"	>
 	<MenuItem item={HOME} onClick={() => dispatch(changeMenu(HOME))} />
 	</NavLink>
 
-	<NavLink
-    to="/about"
-    activeStyle={ {
-	    textDecoration: 'none',
-		color: 'black'
-    }}
-	>
+	<NavLink to="/about"	>
 	<MenuItem item={ABOUT} onClick={() => dispatch(changeMenu(ABOUT))} />
 	</NavLink>
 
-	<NavLink
-    to="/all-posts"
-    activeStyle={ {
-	    textDecoration: 'none',
-		color: 'black'
-    }}
-	>
+	<NavLink to="/all-posts"	>
+
 	<MenuItem item={ALL_POSTS} onClick={() => dispatch(changeMenu(ALL_POSTS))} />
 	</NavLink>
 

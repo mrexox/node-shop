@@ -6,12 +6,15 @@ import '../styles/PostList.css';
 // Every Post has all attributes given in props
 const PostList = ({ posts, likePost }) => (
 	<div className="post-list">
-	{posts.map((post, index) => (
+	{posts.length ? posts.map((post, index) => (
 		<Post
 		key={index}
 		{...post}
 		likePost={() => likePost(post.id)} />
-	))}
+	))
+    : 'No posts'
+
+	}
 	</div>
 )
 
