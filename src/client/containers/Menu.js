@@ -9,16 +9,16 @@ import { changeMenu } from '../actions/menuActions';
 let Menu = ({ dispatch, chosen }) => (
 	<div className="menu">
 
-	<NavLink to="/home"	>
+	<NavLink to={`/${HOME}`} >
 	<MenuItem item={HOME} onClick={() => dispatch(changeMenu(HOME))} />
 	</NavLink>
 
-	<NavLink to="/about"	>
+	<NavLink to={`/${ABOUT}`} >
 	<MenuItem item={ABOUT} onClick={() => dispatch(changeMenu(ABOUT))} />
 	</NavLink>
 
-	<NavLink to="/all-posts"	>
 
+	<NavLink to={`/${ALL_POSTS}`} >
 	<MenuItem item={ALL_POSTS} onClick={() => dispatch(changeMenu(ALL_POSTS))} />
 	</NavLink>
 
