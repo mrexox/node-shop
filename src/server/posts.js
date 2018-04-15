@@ -1,10 +1,22 @@
 'use strict';
+/* Using databases requires syncronous selections or special
+ * SQL commands. It wasn't cool to make our simple flat model
+ * work with complex SQL queries. The main problem is in relations
+ * one-to-many. For example posts can have many tags and comments.
+ * It seems impossible to query one relation and fill all data with it.
+ *
+ * So for now we choose syncronously filling the data we want
+ * to return using Promises.
+ */
+
 const Promise = require('bluebird');
 const dbManager = require('./db');
 
 const db = dbManager.db;
 const scripts = dbManager.scripts;
 
+/* Getting all posts.
+ */
 const getPosts = new Promise(function(resolve, reject) {
 	db.query(scripts.allPosts, (err, res) => {
 		if (err) { reject(err); }
@@ -12,8 +24,9 @@ const getPosts = new Promise(function(resolve, reject) {
 	});
 });
 
-// Fill posts with images
-const getImages = (post) => {	
+/* Filling posts with images.
+ */
+const getImages = (post) => {
 	return new Promise(function(resolve, reject) {
 		db.query(scripts.imagesOfPost, {post_id: post.id}, (err, rows) => {
 			if (err) { reject(err); }
@@ -24,7 +37,8 @@ const getImages = (post) => {
 	});
 };
 
-// Fill posts with tags
+/* Filling posts with tags.
+ */
 const getTags = (post) => {
 	return new Promise(function(resolve, reject) {
 		db.query(scripts.tagsOfPost, {post_id: post.id}, (err, rows) => {
@@ -35,7 +49,10 @@ const getTags = (post) => {
 	});
 };
 
-// Compose all fillers to construct post list
+/* Composing all fillers to construct post list.
+ * getPosts -> getImages -> getTags
+ * Public interface.
+ */
 function getAllPosts(callback) {
 	if (typeof(callback) !== 'function') {
 		console.log('getAllPosts: expects a callback function as an arg');
