@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import '../styles/Page.css';
+
 import { HOME, ABOUT, ALL_POSTS } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
@@ -10,17 +12,19 @@ let Page = ({ menu, param }) => {
 	let page;
 	switch (menu) {
 		case HOME:
-			page = (<HomePage param={param} />); break;
+			console.log('1');
+			page = HomePage; break;
 		case ABOUT:
-			page = (<AboutPage />); break;
+			page = AboutPage; break;
 		case ALL_POSTS:
-			page = (<AllPostsPage param={param} />); break;
+			page = AllPostsPage; break;
 		default:
-			page = (<HomePage param={param} />);
+			page = HomePage;
 	}
 	return (
 		<div className="page">
-		{page}
+		<Route path={`/${menu}`} component={page} >
+		</Route>
 		</div>
 	);
 };

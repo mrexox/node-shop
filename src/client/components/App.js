@@ -5,7 +5,7 @@ import '../styles/App.css';
 
 import Menu from '../containers/Menu';
 import Page from '../containers/Page';
-import Footer from './Footer';
+import Footer from '../containers/Footer';
 
 const App = ({ match: {params} }) => (
 	<div>
