@@ -13,12 +13,13 @@
 }
 
 .post__tags {
-	color: #bbb;
 	font-size: 18px;
 	margin-top: 10px;
 }
 
 .post__tag {
+	text-decoration: none;
+	color: #bbb;
 	dispay: inline-block;
 	margin-right: 5px;
 	margin-top: 5px;
