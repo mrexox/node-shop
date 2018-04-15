@@ -1,4 +1,6 @@
 import fetch from 'cross-fetch';
+import { URL } from '../Constants';
+
 import { FETCH_POSTS_END,
 		 FETCH_POSTS_START,
 		 FETCH_POSTS_ERROR,
@@ -19,7 +21,7 @@ export function recievePosts(posts) {
 export function fetchPosts() {
 	return dispatch => {
 		dispatch(requestPosts());
-		return fetch('http://localhost:8080/')
+		return fetch(`http://${URL}:8080/`)
 			.then(response => response.json(),
 				  error => dispatch(fetchError('posts')))
 			.then(json => dispatch(recievePosts(json)));
