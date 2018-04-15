@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AllPostsPage = () => (
+const AllPostsPage = ({ param }) => (
 	<div>Nothing!</div>
 );
 

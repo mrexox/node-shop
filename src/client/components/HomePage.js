@@ -2,9 +2,9 @@ import React from 'react';
 import PostFilter from '../containers/PostFilter';
 import FilteredPostList from '../containers/FilteredPostList';
 
-const HomePage = () => (
+const HomePage = ({ param }) => (
 	<div>
-	<PostFilter />
+	<PostFilter filter={param}/>
 	<FilteredPostList />
 	</div>
 )

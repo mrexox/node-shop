@@ -6,17 +6,17 @@ import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import AllPostsPage from '../components/AllPostsPage';
 
-let Page = ({ menu }) => {
+let Page = ({ menu, param }) => {
 	let page;
 	switch (menu) {
 		case HOME:
-			page = (<HomePage />); break;
+			page = (<HomePage param={param} />); break;
 		case ABOUT:
 			page = (<AboutPage />); break;
 		case ALL_POSTS:
-			page = (<AllPostsPage />); break;
+			page = (<AllPostsPage param={param} />); break;
 		default:
-			page = (<HomePage />);
+			page = (<HomePage param={param} />);
 	}
 	return (
 		<div className="page">

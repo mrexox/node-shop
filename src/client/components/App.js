@@ -7,10 +7,10 @@ import Menu from '../containers/Menu';
 import Page from '../containers/Page';
 import Footer from './Footer';
 
-const App = () => (
+const App = ({ match: {params} }) => (
 	<div>
-	<Menu />
-	<Page />
+	<Menu chosen={params.place} />
+	<Page param={params.subplace} />
 	<Footer />
 	</div>
 );
