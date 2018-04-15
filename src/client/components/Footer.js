@@ -3,7 +3,7 @@ import '../styles/Footer.css';
 // No props yet
 const Footer = () => (
 	<footer>
-	Shop by Ian (C) 2018
+	Shop (C) 2018
 	</footer>
 );
 

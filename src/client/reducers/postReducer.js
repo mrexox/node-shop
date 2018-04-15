@@ -8,8 +8,6 @@ import { FETCH_POSTS_END,
 export default function posts(state={}, action) {
 	switch (action.type) {
 		case LIKE_POST:
-			console.log(state.data);
-			console.log(state);
 			let data = state.data.map((post, index) => {
 				if (post.id === action.id) {
 					/* I have liked a post

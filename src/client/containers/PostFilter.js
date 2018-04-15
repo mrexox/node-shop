@@ -8,13 +8,13 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => { // TODO accept { filter }
 	return {
 		postFilter: state.postFilter
 	};
 };
 
-let PostFilter = ({ onChange, postFilter }) => (	
+let PostFilter = ({ onChange, postFilter }) => (
 	<input onChange={onChange} value={postFilter}/>
 );
 

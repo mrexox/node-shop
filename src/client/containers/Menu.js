@@ -1,15 +1,43 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/Menu.css';
 import { connect } from 'react-redux';
 import MenuItem from '../components/MenuItem';
 import { HOME, ABOUT, ALL_POSTS } from '../Constants';
 import { changeMenu } from '../actions/menuActions';
 
-let Menu = ({ dispatch }) => (
+let Menu = ({ dispatch, chosen }) => (
 	<div className="menu">
-		<MenuItem item={HOME} onClick={() => dispatch(changeMenu(HOME))} />
-		<MenuItem item={ABOUT} onClick={() => dispatch(changeMenu(ABOUT))} />
-		<MenuItem item={ALL_POSTS} onClick={() => dispatch(changeMenu(ALL_POSTS))} />
+	<NavLink
+    to="/home"
+       activeStyle={ {
+	     textDecoration: 'none',
+		 color: 'black'
+       }}
+	>
+	<MenuItem item={HOME} onClick={() => dispatch(changeMenu(HOME))} />
+	</NavLink>
+
+	<NavLink
+    to="/about"
+    activeStyle={ {
+	    textDecoration: 'none',
+		color: 'black'
+    }}
+	>
+	<MenuItem item={ABOUT} onClick={() => dispatch(changeMenu(ABOUT))} />
+	</NavLink>
+
+	<NavLink
+    to="/all-posts"
+    activeStyle={ {
+	    textDecoration: 'none',
+		color: 'black'
+    }}
+	>
+	<MenuItem item={ALL_POSTS} onClick={() => dispatch(changeMenu(ALL_POSTS))} />
+	</NavLink>
+
 	</div>
 )
 
