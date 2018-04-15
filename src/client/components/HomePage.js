@@ -4,8 +4,8 @@ import FilteredPostList from '../containers/FilteredPostList';
 
 const HomePage = ({ param }) => (
 	<div>
-	<PostFilter filter={param}/>
-	<FilteredPostList />
+	<PostFilter filter={param} />
+	<FilteredPostList filter={param} />
 	</div>
 )
 
