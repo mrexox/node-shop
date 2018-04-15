@@ -10,9 +10,6 @@
     background: rgba(255,255,255,0.5);
 }
 
-.filter {
-
-}
 @media screen and (max-width: 600px) {
 	.filter {
 		width: 85%;

@@ -17,10 +17,9 @@ export const getFilteredPosts = (posts, filter) => {
 }
 
 
-const mapStateToProps = (state, myProps) => {
-	// FIXME make some reasonable distinction between props-filter and state-filter
+const mapStateToProps = state => {
 	return {
-		posts: getFilteredPosts(state.posts.data, myProps.filter || state.postFilter)
+		posts: getFilteredPosts(state.posts.data, state.postFilter)
 	}
 }
 
