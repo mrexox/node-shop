@@ -2,10 +2,10 @@ import React from 'react';
 import PostFilter from '../containers/PostFilter';
 import FilteredPostList from '../containers/FilteredPostList';
 
-const HomePage = ({ param }) => (
+const HomePage = ({ match: { params } }) => (
 	<div>
-	<PostFilter filter={param} />
-	<FilteredPostList filter={param} />
+	<PostFilter filter={params.param} />
+	<FilteredPostList filter={params.param} />
 	</div>
 )
 

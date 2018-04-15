@@ -9,14 +9,16 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-const mapStateToProps = (state) => { // TODO accept { filter }
+const mapStateToProps = (state, { filter }) => {
 	return {
-		postFilter: state.postFilter
+		postFilter: filter || state.postFilter
 	};
 };
 
 let PostFilter = ({ onChange, postFilter }) => (
-	<input onChange={onChange} value={postFilter} className="filter"/>
+	<input onChange={onChange}
+	defaultValue={postFilter}
+	className="filter"/>
 );
 
 PostFilter = connect(

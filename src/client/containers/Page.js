@@ -3,43 +3,35 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
 
-import { HOME, ABOUT, ALL_POSTS } from '../Constants';
+import { HOME, ABOUT, ALL_POSTS, SEARCH } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import AllPostsPage from '../components/AllPostsPage';
 
-let Page = ({ menu, param }) => {
+let Page = ({ param }) => {
 	let page;
-	switch (menu) {
+	switch (param) {
 		case HOME:
-			console.log('1');
 			page = HomePage; break;
 		case ABOUT:
 			page = AboutPage; break;
 		case ALL_POSTS:
 			page = AllPostsPage; break;
+		case SEARCH:
+			page = HomePage; break;
 		default:
 			page = HomePage;
 	}
 	return (
 		<div className="page">
-		<Route path={`/${menu}`} component={page} >
+		<Route path={`/${param}/:param?`} component={page} >
 		</Route>
 		</div>
 	);
 };
 
-const mapStateToProps = state => {
-	return {
-		menu: state.menu
-	};
-};
-
 // The only and the one component Page in the application
 // That's why it is connected to itself
-Page = connect(
-	mapStateToProps,
-	dispatch => ({})
-)(Page);
+Page = connect()(Page);
 
 export default Page;

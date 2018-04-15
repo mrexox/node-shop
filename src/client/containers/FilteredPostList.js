@@ -2,11 +2,15 @@ import { connect } from 'react-redux';
 import { likePost } from '../actions/postsActions';
 import PostList from '../components/PostList';
 
+function escapeRegExp(string){
+	return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
 export const getFilteredPosts = (posts, filter) => {
 	if (filter === '' || typeof filter === undefined) {
 		return posts;
 	}
-	let tagRe = new RegExp(filter, 'i'); // ignoring case
+	let tagRe = new RegExp(escapeRegExp(filter), 'i'); // ignoring case
 	// Finds if any tag matches the filter, given in regexp
 	return posts.filter((p) => (p.tags.find((tag) => tag.match(tagRe))));
 

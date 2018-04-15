@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ImageList from './ImageList';
+import { SEARCH } from '../Constants';
 import '../styles/Post.css';
 
 const Post = ({ id, likes, imageList, htmlText, tags, likePost }) => (
@@ -10,7 +12,9 @@ const Post = ({ id, likes, imageList, htmlText, tags, likePost }) => (
 	<span className="post__likes" onClick={likePost}>{likes} Loved it!</span>
 	<div className="post__tags">
 	{tags.map((name, index) => (
-		<span key={index} className="post__tag">{name}</span>
+		<Link key={index} className="post__tag" to={`/${SEARCH}/${name}`}>
+		{name}
+		</Link>
 	))}
 	</div>
 	</div>

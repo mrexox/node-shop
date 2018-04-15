@@ -13,16 +13,14 @@ function translateItem(item) {
 	}
 }
 // Make it more complicated if needed
-const MenuItem = ({ item, onClick }) => (
-	<div className="menu-item"
-	onClick={onClick} >
+const MenuItem = ({ item }) => (
+	<div className="menu-item">
 	{translateItem(item)}
 	</div>
 )
 
 MenuItem.propTypes = {
 	item: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired
 };
 
 export default MenuItem;

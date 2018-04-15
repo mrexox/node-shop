@@ -1,8 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { changeMenu } from '../actions/menuActions';
-import { HOME, ABOUT, ALL_POSTS } from '../Constants';
 import '../styles/Footer.css';
 // No props yet
 let Footer = ({ dispatch }) => (
@@ -12,15 +9,15 @@ let Footer = ({ dispatch }) => (
 	<span className="footer__map__header">
 	Site map
 	</span>
-	<Link to="/home" onClick={() => dispatch(changeMenu(HOME))} >
+	<Link to="/home" >
 	Home
 	</Link>
 
-	<Link to="/all-posts" onClick={() => dispatch(changeMenu(ALL_POSTS))} >
+	<Link to="/all-posts" >
 	All items
 	</Link>
 
-	<Link to="/about" onClick={() => dispatch(changeMenu(ABOUT))} >
+	<Link to="/about" >
 	About
 	</Link>
 
@@ -35,6 +32,5 @@ let Footer = ({ dispatch }) => (
 	</footer>
 );
 
-Footer = connect()(Footer);
 
 export default Footer;
