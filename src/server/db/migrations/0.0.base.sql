@@ -1,5 +1,5 @@
---DROP DATABASE IF EXISTS elis_db ;
---CREATE DATABASE elis_db;
+#DROP DATABASE IF EXISTS elis_db ;
+#CREATE DATABASE elis_db;
 USE elis_db;
 
 DROP TABLE IF EXISTS admin;

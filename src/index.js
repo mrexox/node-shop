@@ -7,22 +7,22 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import App from './client/components/App';
 import registerServiceWorker from './registerServiceWorker';
-import configureStore from './client/store/configureStore'; // adding a redux
+import createStore from './client/store/createStore'; // adding a redux
 
 import { fetchPosts } from './client/actions/postsActions';
 
-const store = configureStore();	// redux-store
+const store = createStore();	// redux-store
 
 fetchPosts()(store.dispatch);
 
 
 ReactDOM.render(
 	<Provider store={store}>
-	<Router>
-	<Route path="/:place?" component={App} />
-	</Router>
+		<Router>
+			<Route path="/:place?" component={App} />
+		</Router>
 	</Provider>,
-							   document.getElementById('root')
+	document.getElementById('root')
 );
 
 registerServiceWorker();

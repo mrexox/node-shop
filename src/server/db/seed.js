@@ -1,10 +1,11 @@
+const config = require('../config');
 const mariasql = require('mariasql');
 const utils = require('../utils');
 const db = new mariasql({
- 	host: '127.0.0.1',
- 	user: process.env.SHOP_USER,
- 	password: process.env.SHOP_PASSWORD,
-	db: process.env.SHOP_DB
+	host: config.get("database:host"),
+	user: config.get("SHOP_USER"),
+	password: config.get("SHOP_PASSWORD"),
+	db: config.get("SHOP_DB")
 	//port: 3306
 });
 
