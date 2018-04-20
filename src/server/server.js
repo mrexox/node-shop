@@ -14,6 +14,7 @@ app.use(express.json()); // making sure of JSON support
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors());
+
 // Configuration
 const asIs = (i, val) => val;
 app.set('json spaces', 2);
