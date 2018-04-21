@@ -7,9 +7,11 @@ import { HOME, ABOUT, ALL_POSTS, SEARCH } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import AllPostsPage from '../components/AllPostsPage';
+import Menu from '../components/Menu';
 
 let Page = ({ param }) => {
 	let page;
+	let menu = (<Menu chosen={param}>);
 	switch (param) {
 		case HOME:
 			page = HomePage; break;
@@ -19,13 +21,19 @@ let Page = ({ param }) => {
 			page = AllPostsPage; break;
 		case SEARCH:
 			page = HomePage; break;
+		case ADMIN: // TODO
+			page = AdminPage;
+			menu = (<AdminMenu chosen={param}>);
 		default:
 			page = HomePage;
 	}
 	return (
+		<div>
+		{menu}
 		<div className="page">
 		<Route path={`/${param}/:param?`} component={page} >
 		</Route>
+		</div>
 		</div>
 	);
 };
