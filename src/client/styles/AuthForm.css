@@ -1,0 +1,20 @@
+form.auth {
+  width: 480px;
+  margin: auto;
+  padding: 16px;
+  text-align: center;
+}
+
+form.auth legend {
+  font-weight: bold;
+}
+
+form.auth input {
+  padding: 6px;
+}
+
+form.auth input.btn {
+  padding: 4px;
+  margin-left: 8px;
+  margin-right: 8px;
+}

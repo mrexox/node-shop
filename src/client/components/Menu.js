@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import MenuItem from '../components/MenuItem';
-import { HOME, ABOUT, ALL_POSTS } from '../Constants';
+import { HOME, ABOUT, ALL_POSTS, LOGIN } from '../Constants';
 import '../styles/Menu.css';
 
 
@@ -19,6 +19,10 @@ let Menu = ({ dispatch, chosen }) => (
 
 	<NavLink to={`/${ALL_POSTS}`} >
 	<MenuItem item={ALL_POSTS} />
+	</NavLink>
+
+	<NavLink to={`/${LOGIN}`} >
+	<MenuItem item={LOGIN} />
 	</NavLink>
 
 	</div>

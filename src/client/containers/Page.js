@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
 
-import { HOME, ABOUT, ALL_POSTS, SEARCH } from '../Constants';
+import { HOME, ABOUT, ALL_POSTS, SEARCH, LOGIN, REGISTER } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import AllPostsPage from '../components/AllPostsPage';
+import LoginPage from '../components/LoginPage';
+import RegisterPage from '../components/RegisterPage';
 
 let Page = ({ param }) => {
 	let page;
@@ -19,6 +21,10 @@ let Page = ({ param }) => {
 			page = AllPostsPage; break;
 		case SEARCH:
 			page = HomePage; break;
+		case LOGIN:
+			page = LoginPage; break;
+		case REGISTER:
+			page = RegisterPage; break;
 		default:
 			page = HomePage;
 	}
