@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
 
-import { HOME, ABOUT, ALL_POSTS, SEARCH, LOGIN, REGISTER, ADMIN } from '../Constants';
+import { HOME, ABOUT, ALL_POSTS, SEARCH, LOGIN_URL, REGISTER_URL, ADMIN } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import AllPostsPage from '../components/AllPostsPage';
@@ -23,9 +23,9 @@ let Page = ({ param }) => {
 			page = AllPostsPage; break;
 		case SEARCH:
 			page = HomePage; break;
-		case LOGIN:
+		case LOGIN_URL:
 			page = LoginPage; break;
-		case REGISTER:
+		case REGISTER_URL:
 			page = RegisterPage; break;
 		/*case ADMIN: // TODO
 			page = AdminPage;

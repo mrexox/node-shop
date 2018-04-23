@@ -1,9 +1,8 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { REGISTER } from '../actions/actionTypes';
+import { registerRequest } from '../actions/registerActions';
 import LoadingImage from '../img/Loading.gif';
 import '../styles/AuthForm.css';
-
 
 class RegisterPage extends Component {
     constructor(props) {
@@ -98,12 +97,8 @@ class RegisterPage extends Component {
 }
 
 export default connect(
-    state => ({
-        
-    }),
+    state => ({}),
     dispatch => ({
-        onRegister: (payload) => {
-            dispatch({ type: REGISTER, payload});
-        }
+        onRegister: (payload) => dispatch(registerRequest(payload))
     })
 )(RegisterPage);

@@ -1,8 +1,8 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { REGISTER } from '../Constants';
-import { LOGIN } from '../actions/actionTypes';
+import { REGISTER_URL } from '../Constants';
+import { loginRequest } from '../actions/loginActions';
 import LoadingImage from '../img/Loading.gif';
 import '../styles/AuthForm.css';
 
@@ -62,7 +62,6 @@ class LoginPage extends Component {
                         />
                     </p>
                 
-
                     <input 
                         type="button"
                         value="Log in"
@@ -75,8 +74,8 @@ class LoginPage extends Component {
                         className="btn wait_btn"
                         hidden={!this.state.isSend}
                         disabled
-                    ><img src={LoadingImage} alt="registration..."/></button>
-                    <NavLink to={`/${REGISTER}`} >
+                    ><img src={LoadingImage} alt="logining..."/></button>
+                    <NavLink to={`/${REGISTER_URL}`} >
                         <input
                             type="button"
                             value="Register"
@@ -91,12 +90,8 @@ class LoginPage extends Component {
 }
 
 export default connect(
-    state => ({
-        
-    }),
+    state => ({}),
     dispatch => ({
-        onLogin: (payload) => {
-            dispatch({ type: LOGIN, payload});
-        }
+        onLogin: (payload) => dispatch(loginRequest(payload)) 
     })
 )(LoginPage);
