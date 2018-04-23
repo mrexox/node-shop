@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import MenuItem from '../components/MenuItem';
-import { HOME, ABOUT, ALL_POSTS } from '../Constants';
+import { HOME, ABOUT, CONTACT_US } from '../Constants';
 import '../styles/Menu.css';
 
 
@@ -17,8 +17,8 @@ let Menu = ({ dispatch, chosen }) => (
 	</NavLink>
 
 
-	<NavLink to={`/${ALL_POSTS}`} >
-	<MenuItem item={ALL_POSTS} />
+	<NavLink to={`/${CONTACT_US}`} >
+	<MenuItem item={CONTACT_US} />
 	</NavLink>
 
 	</div>

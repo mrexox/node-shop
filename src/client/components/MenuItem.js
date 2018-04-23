@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/MenuItem.css';
 
-import { HOME, ABOUT, ALL_POSTS } from '../Constants';
+import { HOME, ABOUT, ALL_POSTS,
+		 ORDERS, MESSAGES, CONTACT_US } from '../Constants';
 
 function translateItem(item) {
 	switch (item) {
 		case HOME: return 'Home';
 		case ABOUT: return 'About';
 		case ALL_POSTS: return 'All posts';
+		case ORDERS: return 'Orders';
+		case MESSAGES: return 'Messages';
+		case CONTACT_US: return 'Contact Us';
 		default: return '';
 	}
 }

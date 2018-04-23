@@ -3,33 +3,41 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
 
-import { HOME, ABOUT, ALL_POSTS, SEARCH } from '../Constants';
+import { ADMIN, HOME, ABOUT, SEARCH } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
-import AllPostsPage from '../components/AllPostsPage';
 import Menu from '../components/Menu';
+import AdminPage from '../components/AdminPage';
+import AdminMenu from '../components/AdminMenu';
 
 let Page = ({ param }) => {
 	let page;
-	let menu = (<Menu chosen={param}>);
+	let menu = 'simple';
+	console.log(param);
 	switch (param) {
 		case HOME:
 			page = HomePage; break;
 		case ABOUT:
 			page = AboutPage; break;
-		case ALL_POSTS:
-			page = AllPostsPage; break;
 		case SEARCH:
 			page = HomePage; break;
-		case ADMIN: // TODO
+		case ADMIN:
 			page = AdminPage;
-			menu = (<AdminMenu chosen={param}>);
+			menu = 'admin';
+			break;
 		default:
 			page = HomePage;
 	}
+
+	let menuComponent = (<Menu chosen={param} />);
+	switch (menu) {
+		case 'admin':
+			menuComponent = (<AdminMenu />);
+	}
+
 	return (
 		<div>
-		{menu}
+		{menuComponent}
 		<div className="page">
 		<Route path={`/${param}/:param?`} component={page} >
 		</Route>
