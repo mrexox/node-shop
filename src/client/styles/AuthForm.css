@@ -13,8 +13,34 @@ form.auth input {
   padding: 6px;
 }
 
-form.auth input.btn {
+form.auth .btn {
   padding: 4px;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin: 6px;
+  margin-top: 0px;
+  width: 90px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #2DA292;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+form.auth input.btn:hover {
+  background-color: #2DA292;
+  color: white;
+}
+
+form.auth .wait_btn {
+  padding: 0px;
+  cursor: auto;
+  background-size: contain;
+}
+
+form.auth img {
+  width: 20px;
+  height: 20px;
+  margin-bottom: -10px;
+  top: -4px;
+  position: relative;
 }
