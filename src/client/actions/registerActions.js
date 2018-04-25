@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import { 
     REGISTER_REQUEST,
     REGISTER_SUCCESS,

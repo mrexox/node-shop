@@ -7,8 +7,9 @@ export default {
 		data: []
     },
     login : {
-        inProcess: false,
-        token: ''
+        status: '',
+        token: '',
+        message: ''
     },
     register : {
         inProcess: false
