@@ -3,11 +3,15 @@ import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_ERROR } from '../actions/a
 export default function(state = {}, action) {    
     switch(action.type) {
         case REGISTER_REQUEST:
-            // TODO
+            return {...state, inProcess: true };
+
         case REGISTER_SUCCESS:
-            // TODO
+            return {...state, inProcess: false };
+
         case REGISTER_ERROR:
-            // TODO
+            // TODO: save error info
+            return {...state, inProcess: false };
+
 		default:
 			return state;
 	}

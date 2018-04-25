@@ -1,27 +1,18 @@
 import React, { Component} from 'react';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { registerRequest } from '../actions/registerActions';
 import LoadingImage from '../img/Loading.gif';
 import '../styles/AuthForm.css';
 
 class RegisterPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isSend: false
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleEnterBtnClick = this.handleEnterBtnClick.bind(this);
-    }
-
     handleSubmit() {
         var data = {
             user_name: document.getElementById('username').value,
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
-        }
+        }   
         if (this.validate(data)) {
-            this.setState({ isSend: true });
             this.props.onRegister(data);
         }
     }
@@ -39,7 +30,7 @@ class RegisterPage extends Component {
 
     render() {
         return (
-            <form className="auth" onKeyDown={this.handleEnterBtnClick}>
+            <form className="auth" onKeyDown={this.handleEnterBtnClick.bind(this)}>
                 <fieldset>
                     <legend>Register</legend>
                     <p>
@@ -81,13 +72,13 @@ class RegisterPage extends Component {
                     <input 
                         type="button"
                         value="Register"
-                        onClick={this.handleSubmit}
+                        onClick={this.handleSubmit.bind(this)}
                         className="btn"
-                        hidden={this.state.isSend}
+                        hidden={this.props.inProcess}
                     />
                     <button
                         className="btn wait_btn"
-                        hidden={!this.state.isSend}
+                        hidden={!this.props.inProcess}
                         disabled
                     ><img src={LoadingImage} alt="registration..."/></button>
                 </fieldset>
@@ -97,8 +88,10 @@ class RegisterPage extends Component {
 }
 
 export default connect(
-    state => ({}),
+    state => ({
+        inProcess: state.register.inProcess
+    }),
     dispatch => ({
-        onRegister: (payload) => dispatch(registerRequest(payload))
+        onRegister: bindActionCreators(registerRequest, dispatch)
     })
 )(RegisterPage);

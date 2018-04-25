@@ -1,20 +1,30 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './actionTypes';
+import { 
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR } from './actionTypes';
 
-export const loginRequest = (data) => {
-    return {
-        type: LOGIN_REQUEST,
-        payload: data
+export function loginRequest(data) {
+    return (dispatch) => {
+        dispatch({
+            type: LOGIN_REQUEST,
+            payload: data
+        })
+
+        // TODO: replace to server request
+        setTimeout(() => {
+            dispatch(loginSuccess({token: '12345'}))
+        }, 1000)
     }
 }
 
-export const loginSuccess = (data) => {
+function loginSuccess(data) {
     return {
         type: LOGIN_SUCCESS,
         payload: data
     }
 }
 
-export const loginError = (data) => {
+function loginError(data) {
     return {
         type: LOGIN_ERROR,
         payload: data

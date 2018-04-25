@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { REGISTER_URL } from '../Constants';
@@ -7,22 +8,12 @@ import LoadingImage from '../img/Loading.gif';
 import '../styles/AuthForm.css';
 
 class LoginPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isSend: false
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleEnterBtnClick = this.handleEnterBtnClick.bind(this);
-    }
-
     handleSubmit() {
         var data = {
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
         }
         if (this.validate(data)) {
-            this.setState({ isSend: true });
             this.props.onLogin(data);
         }
     }
@@ -40,7 +31,7 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <form className="auth" onKeyDown={this.handleEnterBtnClick}>
+            <form className="auth" onKeyDown={this.handleEnterBtnClick.bind(this)}>
                 <fieldset>
                     <legend>Log in to shop</legend>
                     <p>
@@ -65,14 +56,14 @@ class LoginPage extends Component {
                     <input 
                         type="button"
                         value="Log in"
-                        onClick={this.handleSubmit}
+                        onClick={this.handleSubmit.bind(this)}
                         className="btn"
                         id="loginBtn"
-                        hidden={this.state.isSend}
+                        hidden={this.props.inProcess}
                     />
                     <button
                         className="btn wait_btn"
-                        hidden={!this.state.isSend}
+                        hidden={!this.props.inProcess}
                         disabled
                     ><img src={LoadingImage} alt="logining..."/></button>
                     <NavLink to={`/${REGISTER_URL}`} >
@@ -90,8 +81,10 @@ class LoginPage extends Component {
 }
 
 export default connect(
-    state => ({}),
+    state => ({
+        inProcess: state.login.inProcess
+    }),
     dispatch => ({
-        onLogin: (payload) => dispatch(loginRequest(payload)) 
+        onLogin: bindActionCreators(loginRequest, dispatch)
     })
 )(LoginPage);

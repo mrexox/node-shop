@@ -5,7 +5,14 @@ export default {
 	posts : {
 		isFetching: false,      // while asynchronous requrest
 		data: []
-	}
+    },
+    login : {
+        inProcess: false,
+        token: ''
+    },
+    register : {
+        inProcess: false
+    }
 };
 
 /*
