@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
-import { ADMIN, CONTACT_US, LOGIN_URL, REGISTER_URL, HOME, ABOUT, SEARCH } from '../Constants';
+import { ADMIN, CONTACT_US, LOGIN_URL, REGISTER_URL, LOGOUT_URL, HOME, ABOUT, SEARCH } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import Menu from '../components/Menu';
 import LoginPage from '../components/LoginPage';
+import LogoutPage from '../components/LogoutPage';
 import RegisterPage from '../components/RegisterPage';
 import AdminPage from '../components/AdminPage';
 import AdminMenu from '../components/AdminMenu';
@@ -28,6 +29,7 @@ let Page = ({ param }) => {
 			<Route path={`/${ABOUT}`} component={AboutPage} />
 			<Route path={`/${LOGIN_URL}`} component={LoginPage} />
 			<Route path={`/${REGISTER_URL}`} component={RegisterPage} />
+			<Route path={`/${LOGOUT_URL}`} component={LogoutPage} />
 			<Route path={`/${HOME}`} component={HomePage} />
 			<Route path={`/${SEARCH}`} component={HomePage} />
 			<Route path={`/${CONTACT_US}`} component={AboutPage} />

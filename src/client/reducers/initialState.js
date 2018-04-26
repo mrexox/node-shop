@@ -7,8 +7,8 @@ export default {
 		data: []
     },
     login : {
-        status: '',
-        token: '',
+        status: 'unsigned',
+        token: false,
         message: ''
     },
     register : {

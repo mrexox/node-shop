@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from './actionTypes';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT } from './actionTypes';
 import { URL } from '../Constants';
 
 export function loginRequest(data) {
@@ -24,15 +24,15 @@ export function loginRequest(data) {
                 dispatch(loginError("Bad response from server, try again later."));
             }
             else {
-                var token = res.json().token;
-                if (!token) {
-                    dispatch(loginError("Invalid email or password."));
-                }
-                else dispatch(loginSuccess(token))
+                res.json().then(json => {
+                    if (!json.token) {
+                        dispatch(loginError("Invalid email or password."));
+                    }
+                    else dispatch(loginSuccess(json.token));
+                })
             }
         })
-        //.catch(error => dispatch(loginError("Wops...")))
-        .catch(error => dispatch(loginError(error)))
+        .catch(error => dispatch(loginError("Wops...")))
     }
 }
 
@@ -43,9 +43,15 @@ function loginSuccess(data) {
     }
 }
 
-function loginError(data) {
+export function loginError(data) {
     return {
         type: LOGIN_ERROR,
         payload: data
+    }
+}
+
+export function logout() {
+    return {
+        type: LOGOUT
     }
 }

@@ -1,9 +1,9 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { REGISTER_URL } from '../Constants';
-import { loginRequest } from '../actions/loginActions';
+import { NavLink, Redirect } from 'react-router-dom';
+import { REDIRECT_AFTER_LOGIN, REGISTER_URL } from '../Constants';
+import { loginRequest, loginError } from '../actions/loginActions';
 import LoadingImage from '../img/Loading.gif';
 import '../styles/AuthForm.css';
 
@@ -13,13 +13,18 @@ class LoginPage extends Component {
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
         }
-        if (this.validate(data)) {
+
+        var valid = this.validate(data);
+        if (valid === true) {
             this.props.onLogin(data);
+        }
+        else {
+            this.props.onError(valid);
         }
     }
 
     validate() {
-        // TODO: validation form
+        // TODO: validation form, return true or error msg
         return true;
     }
 
@@ -30,10 +35,18 @@ class LoginPage extends Component {
     }
 
     render() {
-        return (
+        const { isSigned, isError, inProcess, errorMsg } = this.props;
+
+        if (isSigned) return (
+            <Redirect to={{ pathname: `/${REDIRECT_AFTER_LOGIN}` }}/>
+        );
+        else return (
             <form className="auth" onKeyDown={this.handleEnterBtnClick.bind(this)}>
                 <fieldset>
                     <legend>Log in to shop</legend>
+                    <div className="error" hidden={!isError}>
+                        {errorMsg}
+                    </div>
                     <p>
                         <input
                             type="text"
@@ -59,11 +72,11 @@ class LoginPage extends Component {
                         onClick={this.handleSubmit.bind(this)}
                         className="btn"
                         id="loginBtn"
-                        hidden={this.props.inProcess}
+                        hidden={inProcess}
                     />
                     <button
                         className="btn wait_btn"
-                        hidden={!this.props.inProcess}
+                        hidden={!inProcess}
                         disabled
                     ><img src={LoadingImage} alt="logining..."/></button>
                     <NavLink to={`/${REGISTER_URL}`} >
@@ -83,9 +96,12 @@ class LoginPage extends Component {
 export default connect(
     state => ({
         inProcess: state.login.status === 'request',
-        error: state.login.message
+        isSigned: state.login.status === 'signed',
+        isError: state.login.status === 'error',
+        errorMsg: state.login.message
     }),
     dispatch => ({
-        onLogin: bindActionCreators(loginRequest, dispatch)
+        onLogin: bindActionCreators(loginRequest, dispatch),
+        onError: bindActionCreators(loginError, dispatch)
     })
 )(LoginPage);
