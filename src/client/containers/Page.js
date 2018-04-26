@@ -2,44 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
-
-import { HOME, ABOUT, ALL_POSTS, SEARCH, LOGIN_URL, REGISTER_URL, ADMIN } from '../Constants';
+import { ADMIN, CONTACT_US, LOGIN_URL, REGISTER_URL, HOME, ABOUT, SEARCH } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
-import AllPostsPage from '../components/AllPostsPage';
-import Menu from '../components/Menu'; 
+import Menu from '../components/Menu';
 import LoginPage from '../components/LoginPage';
 import RegisterPage from '../components/RegisterPage';
+import AdminPage from '../components/AdminPage';
+import AdminMenu from '../components/AdminMenu';
 
+
+/*
+ * TODO We need to add some logic for SEARCH in the future
+ */
 let Page = ({ param }) => {
-	let page;
-	let menu = (<Menu chosen={param} />);
-	switch (param) {
-		case HOME:
-			page = HomePage; break;
-		case ABOUT:
-			page = AboutPage; break;
-		case ALL_POSTS:
-			page = AllPostsPage; break;
-		case SEARCH:
-			page = HomePage; break;
-		case LOGIN_URL:
-			page = LoginPage; break;
-		case REGISTER_URL:
-			page = RegisterPage; break;
-		/*case ADMIN: // TODO
-			page = AdminPage;
-			menu = (<AdminMenu chosen={param} />);*/
-		default:
-			page = HomePage;
+	let menuComponent = (<Menu />);
+	if (param === 'admin') {
+		menuComponent = (<AdminMenu />);
 	}
+
 	return (
 		<div>
-		{menu}
-		<div className="page">
-		<Route path={`/${param}/:param?`} component={page} >
-		</Route>
-		</div>
+		  {menuComponent}
+		  <div className="page">
+			<Route path={`/${ABOUT}`} component={AboutPage} />
+			<Route path={`/${LOGIN_URL}`} component={LoginPage} />
+			<Route path={`/${REGISTER_URL}`} component={RegisterPage} />
+			<Route path={`/${HOME}`} component={HomePage} />
+			<Route path={`/${SEARCH}`} component={HomePage} />
+			<Route path={`/${CONTACT_US}`} component={AboutPage} />
+			<Route path={`/${ADMIN}`} component={AdminPage} />
+		  </div>
 		</div>
 	);
 };

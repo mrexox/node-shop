@@ -4,7 +4,7 @@ import Image from './Image';
 
 const ImageList = ({ images }) => (
 	<div className="image-list">
-	{images.map((img, index) => (<Image key={index} {...img} />))}
+	  {images.map((img, index) => (<Image key={index} {...img} />))}
 	</div>
 );
 

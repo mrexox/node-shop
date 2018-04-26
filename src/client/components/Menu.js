@@ -1,31 +1,32 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import MenuItem from '../components/MenuItem';
-import { HOME, ABOUT, ALL_POSTS, LOGIN_URL } from '../Constants';
+import { HOME, ABOUT, LOGIN_URL, CONTACT_US } from '../Constants';
+
 import '../styles/Menu.css';
 
 
-let Menu = ({ dispatch, chosen }) => (
+let Menu = () => (
 	<div className="menu">
 
-	<NavLink to={`/${HOME}`} >
-	<MenuItem item={HOME} />
-	</NavLink>
+	  <NavLink to={`/${HOME}`} >
+		<MenuItem item={HOME} />
+	  </NavLink>
 
-	<NavLink to={`/${ABOUT}`} >
-	<MenuItem item={ABOUT} />
-	</NavLink>
+	  <NavLink to={`/${ABOUT}`} >
+		<MenuItem item={ABOUT} />
+	  </NavLink>
 
 
-	<NavLink to={`/${ALL_POSTS}`} >
-	<MenuItem item={ALL_POSTS} />
-	</NavLink>
+	  <NavLink to={`/${CONTACT_US}`} >
+		<MenuItem item={CONTACT_US} />
+	  </NavLink>
 
 	<NavLink to={`/${LOGIN_URL}`} >
 	<MenuItem item={LOGIN_URL} />
 	</NavLink>
 
 	</div>
-)
+);
 
 export default Menu;

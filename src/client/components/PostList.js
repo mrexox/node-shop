@@ -6,17 +6,17 @@ import '../styles/PostList.css';
 // Every Post has all attributes given in props
 const PostList = ({ posts, likePost }) => (
 	<div className="post-list">
-	{posts.length ? posts.map((post, index) => (
-		<Post
-		key={index}
-		{...post}
-		likePost={() => likePost(post.id)} />
-	))
-    : 'No posts'
+	  {posts.length ? posts.map((post, index) => (
+		  <Post
+			key={index}
+			{...post}
+			likePost={() => likePost(post.id)} />
+	  ))
+       : 'No posts'
 
-	}
+	  }
 	</div>
-)
+);
 
 PostList.propTypes = {
 	posts: PropTypes.arrayOf(
@@ -27,6 +27,6 @@ PostList.propTypes = {
 	).isRequired,
 	onClick: PropTypes.func,
 	likePost: PropTypes.func.isRequired
-}
+};
 
 export default PostList;
