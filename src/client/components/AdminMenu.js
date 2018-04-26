@@ -5,23 +5,21 @@ import { ALL_POSTS, ORDERS, MESSAGES } from '../Constants';
 import '../styles/Menu.css';
 
 
-let Menu = ({ dispatch, chosen }) => (
+let AdminMenu = () => {
+	let menus = [];
+	[ALL_POSTS, ORDERS, MESSAGES].forEach((item, index) => {
+		menus.push(
+			<NavLink to={`/admin/${item}`} key={index}>
+			  <MenuItem item={item} />
+			</NavLink>
+		);
+	});
+
+	return (
 	<div className="menu">
-
-	<NavLink to={`/admin/${ALL_POSTS}`} >
-	<MenuItem item={ALL_POSTS} />
-	</NavLink>
-
-
-	<NavLink to={`/admin/${ORDERS}`} >
-	<MenuItem item={ORDERS} />
-	</NavLink>
-
-	<NavLink to={`/admin/${MESSAGES}`} >
-	<MenuItem item={MESSAGES} />
-	</NavLink>
-
+	  { menus }
 	</div>
-)
+	);
+};
 
-export default Menu;
+export default AdminMenu;

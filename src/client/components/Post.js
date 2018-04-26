@@ -7,17 +7,17 @@ import '../styles/Post.css';
 
 const Post = ({ id, likes, imageList, htmlText, tags, likePost }) => (
 	<div className="post">
-	<ImageList images={imageList} />
-	<div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
-	<span className="post__likes" onClick={likePost}>{likes} Loved it!</span>
-	<div className="post__tags">
-	{tags.map((name, index) => (
-		<Link key={index} className="post__tag" to={`/${SEARCH}/${name}`}>
-		{name}
-		</Link>
-	))}
+	  <ImageList images={imageList} />
+	  <div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
+	  <span className="post__likes" onClick={likePost}>{likes} Loved it!</span>
+	  <div className="post__tags">
+		{tags.map((name, index) => (
+			<Link key={index} className="post__tag" to={`/${SEARCH}/${name}`}>
+			  {name}
+			</Link>
+		))}
 	</div>
-	</div>
+		</div>
 );
 
 // See reducers/initialStates
