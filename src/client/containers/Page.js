@@ -27,12 +27,12 @@ let Page = ({ param }) => {
 		  {menuComponent}
 		  <div className="page">
 			<Route path={`/${ABOUT}`} component={AboutPage} />
-			<Route path={`/${LOGIN_URL}`} component={LoginPage} />
-			<Route path={`/${REGISTER_URL}`} component={RegisterPage} />
-			<Route path={`/${LOGOUT_URL}`} component={LogoutPage} />
 			<Route path={`/${HOME}`} component={HomePage} />
 			<Route path={`/${SEARCH}`} component={HomePage} />
 			<Route path={`/${CONTACT_US}`} component={AboutPage} />
+			<Route path={`/${LOGIN_URL}`} component={LoginPage} />
+			<Route path={`/${REGISTER_URL}`} component={RegisterPage} />
+			<Route path={`/${LOGOUT_URL}`} component={LogoutPage} />
 			<Route path={`/${ADMIN}`} component={AdminPage} />
 		  </div>
 		</div>
