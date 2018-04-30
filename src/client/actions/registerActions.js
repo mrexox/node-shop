@@ -1,8 +1,5 @@
-import fetch from 'cross-fetch';
-import {
-    REGISTER_REQUEST,
-    REGISTER_SUCCESS,
-    REGISTER_ERROR } from './actionTypes';
+//import fetch from 'cross-fetch';
+import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_ERROR } from './actionTypes';
 
 export function registerRequest(data) {
     return (dispatch) => {

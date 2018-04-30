@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 let MainMenu = connect(
     state => ({
-        isSigned: state.login.status === 'signed',
+        isSigned: state.auth.status === 'signed',
     })
 )(Menu);
 
