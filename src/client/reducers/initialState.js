@@ -2,16 +2,25 @@
 // For fetching we use port 8080 (let it be)
 export default {
 	postFilter: '',			// equivalent of ALL
-	posts : {
+	posts: {
 		isFetching: false,      // while asynchronous requrest
 		data: []
     },
-    login : {
+    login: {
         status: 'unsigned',
         token: false,
-        message: ''
+        user: {
+            name: false
+        },
+        error: {
+            message: ''
+        }
     },
-    register : {
+    /*session: {
+        checked: false,
+        auth: false
+    },*/
+    register: {
         inProcess: false
     }
 };

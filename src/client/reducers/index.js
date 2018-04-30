@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import posts from './postReducer';
-import postFilter from './filterReducer';
-import login from './loginReducer';
-import register from './registerReducer';
+import postsReducer from './postReducer';
+import filterReducer from './filterReducer';
+import loginReducer from './loginReducer';
+//import sessionReducer from './sessionReducer';
+import registerReducer from './registerReducer';
 
 export default combineReducers({
-	posts,
-	postFilter,
-	login,
-	register
+	posts: postsReducer,
+	postFilter: filterReducer,
+	login: loginReducer,
+	//session: sessionReducer,
+	register: registerReducer
 });

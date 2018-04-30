@@ -12,8 +12,8 @@ export default function(state = {}, action) {
             return {...state, status: 'error', message: action.payload};
         
         case LOGOUT:
-            return {...state, status: 'unsigned'}
-        
+            return {...state, status: 'unsigned'}       
+
 		default:
 			return state;
 	}

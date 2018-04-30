@@ -9,6 +9,10 @@ export const LOGIN_REQUEST = 7;
 export const LOGIN_SUCCESS = 8;
 export const LOGIN_ERROR = 9;
 export const LOGOUT = 10;
+
 export const REGISTER_REQUEST = 11;
 export const REGISTER_SUCCESS = 12;
 export const REGISTER_ERROR = 13;
+
+export const GET_SESSION_SUCCESS = 14;
+export const GET_SESSION_ERROR = 15;

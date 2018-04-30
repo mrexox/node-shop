@@ -98,7 +98,7 @@ export default connect(
         inProcess: state.login.status === 'request',
         isSigned: state.login.status === 'signed',
         isError: state.login.status === 'error',
-        errorMsg: state.login.message
+        errorMsg: state.login.error.message
     }),
     dispatch => ({
         onLogin: bindActionCreators(loginRequest, dispatch),

@@ -32,7 +32,7 @@ export function loginRequest(data) {
                 });
             }
         })
-			.catch(error => dispatch(loginError("Wops...")));
+		.catch(error => dispatch(loginError("Wops...")));
     };
 }
 
@@ -51,6 +51,11 @@ export function loginError(data) {
 }
 
 export function logout() {
+    fetch(`http://${URL}:8080/logout`)
+    .then(res => {
+        
+    });
+
     return {
         type: LOGOUT
     };
