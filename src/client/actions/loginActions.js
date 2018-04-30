@@ -7,7 +7,7 @@ export function loginRequest(data) {
         dispatch({
             type: LOGIN_REQUEST,
             payload: data
-        })
+        });
 
         fetch(`http://${URL}:8080/authenticate`, {
             method: 'POST',
@@ -29,29 +29,29 @@ export function loginRequest(data) {
                         dispatch(loginError("Invalid email or password."));
                     }
                     else dispatch(loginSuccess(json.token));
-                })
+                });
             }
         })
-        .catch(error => dispatch(loginError("Wops...")))
-    }
+			.catch(error => dispatch(loginError("Wops...")));
+    };
 }
 
 function loginSuccess(data) {
     return {
         type: LOGIN_SUCCESS,
         payload: data
-    }
+    };
 }
 
 export function loginError(data) {
     return {
         type: LOGIN_ERROR,
         payload: data
-    }
+    };
 }
 
 export function logout() {
     return {
         type: LOGOUT
-    }
+    };
 }
