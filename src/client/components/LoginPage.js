@@ -95,10 +95,10 @@ class LoginPage extends Component {
 
 export default connect(
     state => ({
-        inProcess: state.login.status === 'request',
-        isSigned: state.login.status === 'signed',
-        isError: state.login.status === 'error',
-        errorMsg: state.login.error.message
+        inProcess: state.auth.status === 'request',
+        isSigned: state.auth.status === 'signed',
+        isError: state.auth.status === 'error',
+        errorMsg: state.auth.error.message
     }),
     dispatch => ({
         onLogin: bindActionCreators(loginRequest, dispatch),

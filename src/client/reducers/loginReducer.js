@@ -9,10 +9,10 @@ export default function(state = {}, action) {
             return {...state, status: 'signed', token: action.payload };
 
         case LOGIN_ERROR:
-            return {...state, status: 'error', message: action.payload};
+            return {...state, status: 'error', error: { message: action.payload } };
         
         case LOGOUT:
-            return {...state, status: 'unsigned'}       
+            return {...state, status: 'unsigned', token: false}       
 
 		default:
 			return state;

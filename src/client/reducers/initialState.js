@@ -6,7 +6,7 @@ export default {
 		isFetching: false,      // while asynchronous requrest
 		data: []
     },
-    login: {
+    auth: {
         status: 'unsigned',
         token: false,
         user: {
@@ -16,12 +16,8 @@ export default {
             message: ''
         }
     },
-    /*session: {
-        checked: false,
-        auth: false
-    },*/
     register: {
-        inProcess: false
+        // ??
     }
 };
 

@@ -36,6 +36,6 @@ let Menu = (props) => {
 
 export default connect(
     state => ({
-        isSigned: state.login.status === 'signed',
+        isSigned: state.auth.status === 'signed',
     })
 )(Menu);
