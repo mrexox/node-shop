@@ -19,7 +19,7 @@ import AdminMenu from '../components/AdminMenu';
  * TODO We need to add some logic for SEARCH in the future
  */
 let Page = ({ param }) => {
-	let menuComponent = (<MainMenu />);
+	let menuComponent = (<Route path={`/${param}`} component={MainMenu} />);
 	if (param === 'admin') {
 		menuComponent = (<AdminMenu />);
 	}
@@ -28,13 +28,13 @@ let Page = ({ param }) => {
 		<div>
 		  {menuComponent}
 		  <div className="page">
-			<Route path={`/${ABOUT}`} component={AboutPage} />
-			<Route path={`/${HOME}`} component={HomePage} />
-			<Route path={`/${SEARCH}`} component={HomePage} />
-			<Route path={`/${CONTACT_US}`} component={AboutPage} />
-			<Route path={`/${LOGIN_URL}`} component={LoginPage} />
-			<Route path={`/${REGISTER_URL}`} component={RegisterPage} />
-			<Route path={`/${LOGOUT_URL}`} component={LogoutPage} />
+			<Route exact path={`/${ABOUT}`} component={AboutPage} />
+			<Route exact path={`/${HOME}`} component={HomePage} />
+			<Route exact path={`/${SEARCH}`} component={HomePage} />
+			<Route exact path={`/${CONTACT_US}`} component={AboutPage} />
+			<Route exact path={`/${LOGIN_URL}`} component={LoginPage} />
+			<Route exact path={`/${REGISTER_URL}`} component={RegisterPage} />
+			<Route exact path={`/${LOGOUT_URL}`} component={LogoutPage} />
 			<Route path={`/${ADMIN}`} component={AdminPage} />
 		  </div>
 		</div>
