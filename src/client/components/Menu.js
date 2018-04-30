@@ -1,15 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import MenuItem from '../components/MenuItem';
 import { HOME, ABOUT, LOGIN_URL, LOGOUT_URL, CONTACT_US } from '../Constants';
-
 import '../styles/Menu.css';
 
+/* Clean components must not have logic inside
+   Must only show something
+   All unclean components are containers
+*/
 
-let Menu = (props) => {
+const Menu = (props) => {
     var lastMenuItem = props.isSigned ? LOGOUT_URL : LOGIN_URL;
-    
+
     return (
         <div className="menu">
 
@@ -32,10 +34,6 @@ let Menu = (props) => {
 
         </div>
     );
-}
+};
 
-export default connect(
-    state => ({
-        isSigned: state.login.status === 'signed',
-    })
-)(Menu);
+export default Menu;

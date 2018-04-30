@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
-import { ADMIN, CONTACT_US, LOGIN_URL, REGISTER_URL, LOGOUT_URL, HOME, ABOUT, SEARCH } from '../Constants';
+import { ADMIN, CONTACT_US, LOGIN_URL,
+		 REGISTER_URL, LOGOUT_URL,
+		 HOME, ABOUT, SEARCH } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
-import Menu from '../components/Menu';
+import MainMenu from './MainMenu';
 import LoginPage from '../components/LoginPage';
 import LogoutPage from '../components/LogoutPage';
 import RegisterPage from '../components/RegisterPage';
@@ -17,7 +19,7 @@ import AdminMenu from '../components/AdminMenu';
  * TODO We need to add some logic for SEARCH in the future
  */
 let Page = ({ param }) => {
-	let menuComponent = (<Menu />);
+	let menuComponent = (<MainMenu />);
 	if (param === 'admin') {
 		menuComponent = (<AdminMenu />);
 	}
