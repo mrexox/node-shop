@@ -17,11 +17,13 @@ import AdminMenu from '../components/AdminMenu';
 
 /*
  * TODO We need to add some logic for SEARCH in the future
+ * @param - first url word
+ * @sub   - second url word
  */
-let Page = ({ param }) => {
+let Page = ({ param, sub }) => {
 	let menuComponent = (<Route path={`/${param}`} component={MainMenu} />);
 	if (param === 'admin') {
-		menuComponent = (<AdminMenu />);
+		menuComponent = (<Route path={`/${ADMIN}`} component={AdminMenu} />);
 	}
 
 	return (

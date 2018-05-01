@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { ALL_POSTS, MESSAGES, ORDERS } from '../Constants';
+import { ADMIN, ALL_POSTS, MESSAGES, ORDERS } from '../Constants';
 import AllPostsPage from './admin/AllPostsPage';
 import MessagesPage from './admin/MessagesPage';
 import OrdersPage from './admin/OrdersPage';
@@ -12,10 +12,10 @@ import OrdersPage from './admin/OrdersPage';
 
 const AdminPage = ({ match }) => (
 	<div>
-	  <Route path={match.url} exact component={AllPostsPage}/>
-	  <Route path={match.url + '/' + ALL_POSTS} component={AllPostsPage} />
-	  <Route path={match.url + '/' + MESSAGES} component={MessagesPage} />
-	  <Route path={match.url + '/' + ORDERS} component={OrdersPage} />
+	  <Route path={`/${ADMIN}`} exact component={AllPostsPage}/>
+	  <Route path={`/${ADMIN}/${ALL_POSTS}`} component={AllPostsPage} />
+	  <Route path={`/${ADMIN}/${MESSAGES}`} component={MessagesPage} />
+	  <Route path={`/${ADMIN}/${ORDERS}`} component={OrdersPage} />
 	</div>
 );
 

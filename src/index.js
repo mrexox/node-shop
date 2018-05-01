@@ -19,7 +19,7 @@ fetchPosts()(store.dispatch);
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>
-			<Route path="/:place?" component={App} />
+			<Route path="/:place?/:subplace?" component={App} />
 		</Router>
 	</Provider>,
 	document.getElementById('root')

@@ -9,7 +9,7 @@ import Footer from './Footer';
  */
 const App = ({ match: {params} }) => (
 	<div>
-	  <Page param={params.place} />
+	  <Page param={params.place} sub={params.subplace}/>
 	  <Footer />
 	</div>
 );
