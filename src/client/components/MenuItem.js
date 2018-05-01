@@ -13,7 +13,7 @@ function translateItem(item) {
 	case MESSAGES: return 'Messages';
 	case LOGIN_URL: return 'Log In/Register';
 	case CONTACT_US: return 'Contact Us';
-	case LOGOUT_URL: return 'Logout'
+	case LOGOUT_URL: return 'Logout';
 	default: return '';
 	}
 }

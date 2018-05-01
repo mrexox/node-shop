@@ -5,7 +5,7 @@ import { ALL_POSTS, ORDERS, MESSAGES } from '../Constants';
 import '../styles/Menu.css';
 
 
-let AdminMenu = () => {
+const AdminMenu = () => {
 	let menus = [];
 	[ALL_POSTS, ORDERS, MESSAGES].forEach((item, index) => {
 		menus.push(
