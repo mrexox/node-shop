@@ -18,6 +18,10 @@ export default {
         error: {
             message: ''
         }
+    },
+    cart: {
+        status: 'preorder',
+        items: []
     }
 };
 
@@ -33,4 +37,16 @@ post: {
 imageList: [ image ]
 image: { url }
 tags: [ tagName ]
+
+auth: {
+    status: 'unsigned' | 'request' | 'signed' | 'error'
+}
+register: {
+    status: 'usigned' | 'request' | 'seccess' | 'error'
+}
+cart: {
+    status: 'preorder' | 'request' | 'order' | 'error'
+    items: [ {id, count}, ...],
+    order_id: //if status == order
+}
 */

@@ -43,10 +43,10 @@ function loginSuccess(data) {
     };
 }
 
-export function loginError(data) {
+export function loginError(msg) {
     return {
         type: LOGIN_ERROR,
-        payload: data
+        payload: msg
     };
 }
 

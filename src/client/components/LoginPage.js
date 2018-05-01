@@ -24,7 +24,7 @@ class LoginPage extends Component {
     }
 
     // Validation form, return true or error msg
-    validate() {
+    validate(data) {
         if (!(data.password && data.email)) {
             return "Enter all the data";
         }
