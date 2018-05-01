@@ -30,8 +30,9 @@ let Page = ({ param, sub }) => {
 		<div>
 		  {menuComponent}
 		  <div className="page">
-			<Route exact path={`/${ABOUT}`} component={AboutPage} />
+			<Route exact path={`/`} component={HomePage} />
 			<Route exact path={`/${HOME}`} component={HomePage} />
+			<Route exact path={`/${ABOUT}`} component={AboutPage} />
 			<Route exact path={`/${SEARCH}`} component={HomePage} />
 			<Route exact path={`/${CONTACT_US}`} component={AboutPage} />
 			<Route exact path={`/${LOGIN_URL}`} component={LoginPage} />
