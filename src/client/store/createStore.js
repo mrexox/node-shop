@@ -10,6 +10,7 @@ import initialState from '../reducers/initialState';
 const persistConfig = {
 	key: 'root',
 	storage,
+	blacklist: ['register', 'postFilter']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

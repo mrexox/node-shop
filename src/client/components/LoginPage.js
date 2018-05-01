@@ -23,9 +23,12 @@ class LoginPage extends Component {
         }
     }
 
+    // Validation form, return true or error msg
     validate() {
-        // TODO: validation form, return true or error msg
-        return true;
+        if (!(data.password && data.email)) {
+            return "Enter all the data";
+        }
+        else return true;
     }
 
     handleEnterBtnClick(event) {

@@ -9,15 +9,15 @@ export default {
     auth: {
         status: 'unsigned',
         token: false,
-        user: {
-            name: false
-        },
         error: {
             message: ''
         }
     },
     register: {
-        // ??
+        status: 'unsigned',
+        error: {
+            message: ''
+        }
     }
 };
 

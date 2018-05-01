@@ -16,6 +16,7 @@ const scripts = {
 	tagsOfPost : 'SELECT name FROM post_tag WHERE post_id = :post_id',
 	imagesOfPost : 'SELECT url FROM post_image WHERE post_id = :post_id',
 	getPassHash : 'SELECT pass_hash FROM admin WHERE login = :login',
+	addNewUser : 'INSERT INTO admin (login, pass_hash) VALUES (:login, :pass_hash)'
 }
 
 module.exports.db = db;

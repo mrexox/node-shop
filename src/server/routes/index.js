@@ -39,6 +39,14 @@ module.exports = function(app) {
         req.session.destroy();
     });
 
+    app.post('/register', (req, res, next) => {
+        let login = req.body.login;
+        let pass = req.body.pass;
+        auth.register(login, pass, result => {
+            return res.json({ status: result }); 
+        });
+    });
+
 
     /// Orders manipulation
 

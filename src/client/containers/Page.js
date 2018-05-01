@@ -9,7 +9,7 @@ import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import MainMenu from './MainMenu';
 import LoginPage from '../components/LoginPage';
-import LogoutPage from '../components/LogoutPage';
+import Logout from './Logout';
 import RegisterPage from '../components/RegisterPage';
 import AdminPage from '../components/AdminPage';
 import AdminMenu from '../components/AdminMenu';
@@ -37,7 +37,7 @@ let Page = ({ param, sub }) => {
 			<Route exact path={`/${CONTACT_US}`} component={AboutPage} />
 			<Route exact path={`/${LOGIN_URL}`} component={LoginPage} />
 			<Route exact path={`/${REGISTER_URL}`} component={RegisterPage} />
-			<Route exact path={`/${LOGOUT_URL}`} component={LogoutPage} />
+			<Route exact path={`/${LOGOUT_URL}`} component={Logout} />
 			<Route path={`/${ADMIN}`} component={AdminPage} />
 		  </div>
 		</div>

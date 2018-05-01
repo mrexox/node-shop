@@ -7,7 +7,7 @@ import { logout } from '../actions/loginActions';
 
 
 
-const LogoutPage = ( props ) => {
+const Logout = ( props ) => {
     if (props.isSigned) {
         props.onLogout();
         return (        
@@ -30,4 +30,4 @@ export default connect(
     dispatch => ({
         onLogout: bindActionCreators(logout, dispatch)
     })
-)(LogoutPage);
+)(Logout);
