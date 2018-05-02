@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/MenuItem.css';
 import { HOME, ABOUT, ALL_POSTS,
-		 ORDERS, MESSAGES, CONTACT_US, LOGIN_URL, LOGOUT_URL } from '../Constants';
+		 ORDERS, MESSAGES, CONTACT_US, LOGIN_URL, LOGOUT_URL, CART_URL } from '../Constants';
 
 function translateItem(item) {
 	switch (item) {
@@ -14,6 +14,7 @@ function translateItem(item) {
 	case LOGIN_URL: return 'Log In/Register';
 	case CONTACT_US: return 'Contact Us';
 	case LOGOUT_URL: return 'Logout';
+	case CART_URL: return 'Cart';
 	default: return '';
 	}
 }

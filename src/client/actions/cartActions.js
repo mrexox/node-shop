@@ -16,11 +16,15 @@ export function cartRemoveItem(id) {
     };
 }
 
+// not work - need debug
 export function cartSubmit(cartItems) {
     return (dispatch) => {
-        dispatch({
-            type: CART_SUBMIT
-        });
+        if (cartItems.length) {
+            dispatch({
+                type: CART_SUBMIT
+            });
+        }
+        else dispatch(cartSubmitError('Can not submit empty cart.'))
 
         fetch(`http://${URL}:8080/order`, {
             method: 'POST',
@@ -30,9 +34,18 @@ export function cartSubmit(cartItems) {
             body: JSON.stringify({ cartItems })
         })
         .then(res => {
-            // handle res
-            // call dispatch(cartSubmitSuccess(order_id)) or dispatch(cartSubmitError('error msg'))
-        })
+            if (res.status >= 400) {
+                dispatch(cartSubmitError("Bad response from server, try again later."));
+            }
+            else {
+                res.json().then(json => {
+                    if (json.status === 'success') {
+                        dispatch(cartSubmitSuccess(json.order_id));
+                    }
+                    else dispatch(cartSubmitError(json.status));
+                });
+            }
+        });
     };
 }
 

@@ -14,7 +14,7 @@ const tryToAuthenticate = (login, pass_hash) => {
 			if (err) { return reject(err); }
 			if (rows.length == 0) { return resolve(false); }
 			if (rows[0].pass_hash != pass_hash) { return resolve(false); }
-			return resolve(true);
+			return resolve(rows[0].amin_id);
 		});
 	});
 };
@@ -57,13 +57,12 @@ function register(login, pass, callback) {
 	let pass_hash = utils.hash(pass);
 	return tryToRegister(login)
 		.then(result => {
-			if (!result) { callback("A user with such login is already registered"); }
+			if (!result) { callback({status: "A user with such login is already registered"}); }
 			else {
-				console.log("can register this user");
 				registerNewUser(login, pass_hash)
 				.then(result => {
-					if (!result)  { callback("An error occurred while writing a new user to the database"); }
-					else { callback('success'); }
+					if (!result)  { callback({status: "An error occurred while writing a new user to the database"}); }
+					else { callback({status: 'success'}); }
 				})
 			}
 		})

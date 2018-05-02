@@ -21,7 +21,10 @@ export default {
     },
     cart: {
         status: 'preorder',
-        items: []
+        items: [],
+        error: {
+            message: ''
+        }
     }
 };
 

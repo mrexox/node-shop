@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import '../styles/Page.css';
 import { ADMIN, CONTACT_US, LOGIN_URL,
-		 REGISTER_URL, LOGOUT_URL,
+		 REGISTER_URL, LOGOUT_URL, CART_URL,
 		 HOME, ABOUT, SEARCH } from '../Constants';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
@@ -13,6 +13,7 @@ import Logout from './Logout';
 import RegisterPage from '../components/RegisterPage';
 import AdminPage from '../components/AdminPage';
 import AdminMenu from '../components/AdminMenu';
+import CartPage from '../components/CartPage';
 
 
 /*
@@ -38,6 +39,7 @@ let Page = ({ param, sub }) => {
 			<Route exact path={`/${LOGIN_URL}`} component={LoginPage} />
 			<Route exact path={`/${REGISTER_URL}`} component={RegisterPage} />
 			<Route exact path={`/${LOGOUT_URL}`} component={Logout} />
+			<Route exact path={`/${CART_URL}`} component={CartPage} />
 			<Route path={`/${ADMIN}`} component={AdminPage} />
 		  </div>
 		</div>

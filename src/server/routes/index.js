@@ -1,5 +1,7 @@
+'use strict';
 const auth = require('../authentication');
 const posts = require('../posts');
+const cart = require('../cart');
 
 module.exports = function(app) {
     // Just fetching all posts
@@ -25,6 +27,8 @@ module.exports = function(app) {
             if (result) {
                 var token = auth.generateToken();
                 req.session.token = token;
+                req.session.user_id = result;
+                console.dir(req.session);
                 return res.json({token: token}); 
             }
             else { return res.json({token: false}); }
@@ -39,12 +43,19 @@ module.exports = function(app) {
         req.session.destroy();
     });
 
+    // Trying to register new user
     app.post('/register', (req, res, next) => {
-        let login = req.body.login;
-        let pass = req.body.pass;
-        auth.register(login, pass, result => {
-            return res.json({ status: result }); 
-        });
+        auth.register(req.body.login, req.body.pass, result => 
+            res.json(result)
+        );
+    });
+
+    // User send his cart to confirm order
+    // now not working
+    app.post('/order', (req, res, next) => {
+        cart.createNewOrder(req.body.items, req.session.user_id, result => 
+            res.json(result)
+        );
     });
 
 
