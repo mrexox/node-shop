@@ -2,17 +2,29 @@
 // For fetching we use port 8080 (let it be)
 export default {
 	postFilter: '',			// equivalent of ALL
-	posts : {
+	posts: {
 		isFetching: false,      // while asynchronous requrest
 		data: []
     },
-    login : {
+    auth: {
         status: 'unsigned',
         token: false,
-        message: ''
+        error: {
+            message: ''
+        }
     },
-    register : {
-        inProcess: false
+    register: {
+        status: 'unsigned',
+        error: {
+            message: ''
+        }
+    },
+    cart: {
+        status: 'preorder',
+        items: [],
+        error: {
+            message: ''
+        }
     }
 };
 
@@ -28,4 +40,16 @@ post: {
 imageList: [ image ]
 image: { url }
 tags: [ tagName ]
+
+auth: {
+    status: 'unsigned' | 'request' | 'signed' | 'error'
+}
+register: {
+    status: 'usigned' | 'request' | 'seccess' | 'error'
+}
+cart: {
+    status: 'preorder' | 'request' | 'order' | 'error'
+    items: [ {id, count}, ...],
+    order_id: //if status == order
+}
 */

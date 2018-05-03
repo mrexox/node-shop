@@ -1,19 +1,24 @@
 import React, { Component} from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
-import { registerRequest } from '../actions/registerActions';
+import { registerRequest, registerError } from '../actions/registerActions';
 import LoadingImage from '../img/Loading.gif';
 import '../styles/AuthForm.css';
 
 class RegisterPage extends Component {
     handleSubmit() {
         var data = {
-            user_name: document.getElementById('username').value,
+            username: document.getElementById('username').value,
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
-        }   
-        if (this.validate(data)) {
+        }
+
+        var valid = this.validate(data);
+        if (valid === true) {
             this.props.onRegister(data);
+        }
+        else {
+            this.props.onError(valid);
         }
     }
 
@@ -23,16 +28,31 @@ class RegisterPage extends Component {
         }
     }
 
+    // Validation form, return true or error msg
     validate(data) {
-        // TODO: validation form
-        return true;
+        if (!(data.username && data.password && data.email)) {
+            return "Enter all the data";
+        }
+        else if (data.password !== document.getElementById('password_confirmation').value) {
+            return "Passwords do not match";
+        }
+        else return true;
     }
 
     render() {
+        const { inProcess, isRegistered, isError, errorMsg } = this.props;
+
         return (
             <form className="auth" onKeyDown={this.handleEnterBtnClick.bind(this)}>
                 <fieldset>
                     <legend>Register</legend>
+                    <div className="error" hidden={!isError}>
+                        {errorMsg}
+                    </div>
+                    <div className="success" hidden={!isRegistered}> 
+                        You have been successfully registered!
+                    </div>
+                    <div hidden={isRegistered}>
                     <p>
                         <input
                             type="text"
@@ -74,13 +94,14 @@ class RegisterPage extends Component {
                         value="Register"
                         onClick={this.handleSubmit.bind(this)}
                         className="btn"
-                        hidden={this.props.inProcess}
+                        hidden={inProcess}
                     />
                     <button
                         className="btn wait_btn"
-                        hidden={!this.props.inProcess}
+                        hidden={!inProcess}
                         disabled
                     ><img src={LoadingImage} alt="registration..."/></button>
+                    </div>
                 </fieldset>
             </form>
         );
@@ -89,9 +110,13 @@ class RegisterPage extends Component {
 
 export default connect(
     state => ({
-        inProcess: state.register.inProcess
+        inProcess: state.register.status === 'request',
+        isRegistered: state.register.status === 'success',
+        isError: state.register.status === 'error',
+        errorMsg: state.register.error.message
     }),
     dispatch => ({
-        onRegister: bindActionCreators(registerRequest, dispatch)
+        onRegister: bindActionCreators(registerRequest, dispatch), 
+        onError: bindActionCreators(registerError, dispatch)
     })
 )(RegisterPage);

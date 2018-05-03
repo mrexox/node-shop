@@ -1,15 +1,26 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
 
 import rootReducer from '../reducers';
-import state from '../reducers/initialState';
+import initialState from '../reducers/initialState';
 
-export default function configureStore(initialState=state) { // for testing FIXME remove
-	return createStore(
-		rootReducer,
+const persistConfig = {
+	key: 'root',
+	storage,
+	blacklist: ['register', 'postFilter']
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export default () => {
+	let store = createStore(
+		persistedReducer,
 		initialState,
-		composeWithDevTools(applyMiddleware(thunk)) // composeWithDevTools - for chrome dev plugin 'Redux DevTools'
-													// thunk - middleware for async queries
+		composeWithDevTools(applyMiddleware(thunk))
 	);
+	let persistor = persistStore(store);
+	return { store, persistor }
 }

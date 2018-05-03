@@ -32,7 +32,7 @@ export function loginRequest(data) {
                 });
             }
         })
-			.catch(error => dispatch(loginError("Wops...")));
+		.catch(error => dispatch(loginError("Wops...")));
     };
 }
 
@@ -43,14 +43,19 @@ function loginSuccess(data) {
     };
 }
 
-export function loginError(data) {
+export function loginError(msg) {
     return {
         type: LOGIN_ERROR,
-        payload: data
+        payload: msg
     };
 }
 
 export function logout() {
+    fetch(`http://${URL}:8080/logout`)
+    .then(res => {
+        
+    });
+
     return {
         type: LOGOUT
     };

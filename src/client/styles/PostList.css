@@ -3,5 +3,8 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin-bottom: 15px;
+	padding-bottom: 15px;
+
+	width: 60%;
+	margin: 0 auto;
 }

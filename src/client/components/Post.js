@@ -9,7 +9,7 @@ const Post = ({ id, likes, imageList, htmlText, tags, likePost }) => (
 	<div className="post">
 	  <ImageList images={imageList} />
 	  <div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
-	  <span className="post__likes" onClick={likePost}>{likes} Loved it!</span>
+	  <span className="post__likes" onClick={likePost}>{likes} likes</span>
 	  <div className="post__tags">
 		{tags.map((name, index) => (
 			<Link key={index} className="post__tag" to={`/${SEARCH}/${name}`}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import MenuItem from '../components/MenuItem';
-import { HOME, ABOUT, LOGIN_URL, LOGOUT_URL, CONTACT_US } from '../Constants';
+import { HOME, ABOUT, LOGIN_URL, LOGOUT_URL, CONTACT_US, CART_URL } from '../Constants';
 import '../styles/Menu.css';
 
 /* Clean components must not have logic inside
@@ -26,6 +26,10 @@ const Menu = (props) => {
 
         <NavLink to={`/${CONTACT_US}`} >
             <MenuItem item={CONTACT_US} />
+        </NavLink>
+
+        <NavLink to={`/${CART_URL}`} >
+            <MenuItem item={CART_URL} />
         </NavLink>
 
         <NavLink to={`/${lastMenuItem}`} >

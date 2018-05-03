@@ -1,12 +1,15 @@
 import { combineReducers } from 'redux';
-import posts from './postReducer';
-import postFilter from './filterReducer';
-import login from './loginReducer';
-import register from './registerReducer';
+
+import postsReducer from './postReducer';
+import filterReducer from './filterReducer';
+import loginReducer from './loginReducer';
+import registerReducer from './registerReducer';
+import cartReducer from './cartReducer';
 
 export default combineReducers({
-	posts,
-	postFilter,
-	login,
-	register
+	posts: postsReducer,
+	postFilter: filterReducer,
+	auth: loginReducer,
+	register: registerReducer,
+	cart: cartReducer
 });
