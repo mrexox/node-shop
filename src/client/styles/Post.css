@@ -1,6 +1,12 @@
 .post {
 	display: inline-block;
-	max-width: 50%;
+	max-width: 30%;
+	box-shadow: 0 0 10px 1px #ccc;
+	padding: 10px;
+}
+
+.post:hover {
+	box-shadow: 0 0 8px 1px #2DA292;
 }
 
 .post img {
@@ -9,12 +15,16 @@
 
 .post__text {
 	font-family: sans;
-	font-size: 18px;
+	font-size: 15px;
 }
 
 .post__tags {
-	font-size: 18px;
-	margin-top: 10px;
+	font-size: 12px;
+}
+
+.post__likes {
+	float: right;
+	font-size: 12px;
 }
 
 .post__tag {
@@ -32,4 +42,8 @@
 
 .post__tag:before {
 	content: '#';
+}
+
+.post__likes {
+	align: right;
 }
