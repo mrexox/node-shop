@@ -8,7 +8,9 @@ const scripts = dbManager.scripts;
 
 function createNewOrder(items, user_id, callback) {
     console.log("in createNewOrder");
-    if (user_id == undefined) return {status: 'Only registered users can place an order.'}
+    if (user_id == undefined) {
+		return {status: 'Only registered users can place an order.'};
+	}
     else addNewOrder(user_id)
     .then(order_id => {
         items.forEach(item => {
@@ -19,6 +21,7 @@ function createNewOrder(items, user_id, callback) {
                     removeOrder(order_id);
                     return {status: 'Server error, try again later'};
                 }
+				return {status: 'Ok'};
             })
             .catch(err => console.log(err)); // FIXME Log errors the right way
         });

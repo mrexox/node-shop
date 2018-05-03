@@ -13,7 +13,7 @@ import Logout from './Logout';
 import RegisterPage from '../components/RegisterPage';
 import AdminPage from '../components/AdminPage';
 import AdminMenu from '../components/AdminMenu';
-import CartPage from '../components/CartPage';
+import CartPage from './CartPage';
 
 
 /*

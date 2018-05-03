@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { LOGIN_URL } from '../Constants';
@@ -14,13 +14,13 @@ class CartPage extends Component {
 
 	render() {
 		return (
-			<input 
-				type="button"
-				value="SUBMIT"
-				onClick={this.handleSubmit.bind(this)}
-				className="btn"
-				id="loginBtn"
-			/>
+			<input
+			  type="button"
+			  value="SUBMIT"
+			  onClick={this.handleSubmit.bind(this)}
+			  className="btn"
+			  id="loginBtn"
+			  />
 		);
 	}
 }
@@ -30,7 +30,7 @@ export default connect(
 		cart: state.cart.items,
         inProcess: state.cart.status === 'request',
         isError: state.cart.status === 'error',
-		errorMsg: state.cart.error.message
+		errorMsg: state.cart.error ? state.cart.error.message : ''
     }),
     dispatch => ({
         onSubmit: bindActionCreators(cartSubmit, dispatch)
