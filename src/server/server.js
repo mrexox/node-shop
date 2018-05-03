@@ -24,7 +24,7 @@ app.use(session({
 	cookie: { 
 		secure: false,
 		httpOnly: true,
-		maxAge: null
+		maxAge: 3600000 //hour
 	},
 	store: new SessionStore({ 
 		host: config.get("database:host"),

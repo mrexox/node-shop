@@ -48,7 +48,7 @@ function authenticate(login, pass, callback) {
 	let pass_hash = utils.hash(pass);
 	return tryToAuthenticate(login, pass_hash)
 		.then(result => callback(result))
-		.catch(err => console.log(err)); // FIXME Log errors the right way
+		.catch(err => console.error(err)); // FIXME Log errors the right way
 }
 
 /* Public interface to register users.
@@ -66,7 +66,7 @@ function register(login, pass, callback) {
 				})
 			}
 		})
-		.catch(err => console.log(err)); // FIXME Log errors the right way
+		.catch(err => console.error(err)); // FIXME Log errors the right way
 }
 
 
@@ -75,27 +75,58 @@ const tokenQueue = []; // the list of tokens available
 /* Generating a unique token and adding it to the tokenQueue
  * Public interface.
  */
-function generateToken() {
+function generateToken(user_id) {
 	let token = utils.hash(Date.now().toString());
-	tokenQueue.push(token);
+	tokenQueue[user_id] = {token: token, valid: true};
 	setTimeout(() => {
-		// Removing the token
-		tokenQueue.splice(tokenQueue.indexOf(token), 1);
+		// Valid -> false after hour
+		tokenQueue[user_id].valid = false;
 	}, 60*60*60);
 	return token;
 };
+
+/* Get new token if time has expired
+ * Public interface.
+ */
+function reGenerateToken(oldToken) {
+	tokenQueue.forEach((element, index, arr) => {
+		if (element.token === oldToken) {
+			let newToken = utils.hash(Date.now().toString());
+			arr[index].token = newToken;
+			arr[index].valid = true;
+			return callback(newToken);
+		}
+	});
+	return callback(false);
+}
 
 /* Check if the token is in there.
  * Public interface.
  */
 function checkToken(token) {
-	if (tokenQueue.indexOf(token) != -1) {
-		return true;
-	}
-	return false;
+	return tokenQueue.some(element => 
+		element.valid === true && element.token === token
+	);
+}
+
+/* Delete token if user logout
+ * Public interface.
+ */
+function deleteToken(token) {
+	tokenQueue.filter(element => element.token !== token);
+}
+
+/* Get user_id by token
+ * Public interface.
+ */
+function getUserId(token) {
+	return tokenQueue.map(element => element.token).indexOf(token);;
 }
 
 module.exports.authenticate = authenticate;
 module.exports.checkToken = checkToken;
 module.exports.generateToken = generateToken;
 module.exports.register = register;
+module.exports.reGenerateToken = reGenerateToken;
+module.exports.deleteToken = deleteToken;
+module.exports.getUserId = getUserId;

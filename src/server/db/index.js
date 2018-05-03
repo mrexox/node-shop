@@ -18,8 +18,9 @@ const scripts = {
 	getPassHash : 'SELECT pass_hash, amin_id FROM admin WHERE login = :login',
 	addNewUser : 'INSERT INTO admin (login, pass_hash) VALUES (:login, :pass_hash)',
 	addNewOrder : 'INSERT INTO orders (user_id) VALUES (:user_id)',
-	addNewOrderItem : 'INSERT INTO order_posts (order_id, post_id, count) VALUES (:order_id, post_id, count)',
-	removeOrder: 'DELETE FROM urder_posts WHERE order_id = :order_id; DELETE FROM orders WHERE order_id = :order_id;'
+	addNewOrderItem : 'INSERT INTO order_posts (order_id, post_id, count) VALUES (:order_id, :post_id, :count)',
+	removeOrder: 'DELETE FROM order_posts WHERE order_id = :order_id',
+	removeOrderItems: 'DELETE FROM orders WHERE order_id = :order_id'
 }
 
 module.exports.db = db;

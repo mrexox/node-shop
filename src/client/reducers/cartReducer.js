@@ -23,7 +23,7 @@ export default function(state = {}, action) {
             return {...state, status: 'order', order_id: action.payload }
 
         case CART_SUBMIT_ERROR:
-            return {...state, status: 'error', error: { message: action.paoload } }
+            return {...state, status: 'error', error: { message: action.payload } }
 
 		default:
 			return state;

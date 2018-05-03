@@ -21,41 +21,41 @@ module.exports = function(app) {
 
     // Trying to authenticate
     app.post('/authenticate', (req, res, next) => {
-        let login = req.body.login;
-        let pass = req.body.pass;
-        auth.authenticate(login, pass, result => {
-            if (result) {
-                var token = auth.generateToken();
-                req.session.token = token;
-                req.session.user_id = result;
-                console.dir(req.session);
+        auth.authenticate(req.body.login, req.body.pass, user_id => {
+            if (user_id) {
+                var token = auth.generateToken(user_id);
                 return res.json({token: token}); 
             }
             else { return res.json({token: false}); }
         });
     });
 
-    app.get('/authenticate', (req, res, next) => {
-        res.json({token: req.session.token});
-    });
+    // Reauthenticate if token time has expired
+    app.post('/reauthenticate', (req, res, next) => 
+        res.json({token: auth.reGenerateToken(req.body.token)})
+    );
 
-    app.get('/logout', (req, res, next) => {
-        req.session.destroy();
-    });
+    // Logout
+    app.post('/logout', (req, res, next) => 
+        auth.deleteToken(req.body.token)
+    );
 
     // Trying to register new user
-    app.post('/register', (req, res, next) => {
+    app.post('/register', (req, res, next) => 
         auth.register(req.body.login, req.body.pass, result => 
             res.json(result)
-        );
-    });
+        )
+    );
 
     // User send his cart to confirm order
-    // now not working
     app.post('/order', (req, res, next) => {
-        cart.createNewOrder(req.body.items, req.session.user_id, result => 
-            res.json(result)
-        );
+        if (auth.checkToken(req.body.token)) {
+            let user_id = auth.getUserId(req.body.token);
+            cart.createNewOrder(req.body.items, user_id, result => 
+                res.json(result)
+            );
+        }
+        else res.json({status: 'Token not valid'});
     });
 
 

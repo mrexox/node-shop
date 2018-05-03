@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT } from '../actions/actionTypes';
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT, RELOGIN_REQUEST } from '../actions/actionTypes';
 
 export default function(state = {}, action) {    
     switch(action.type) {
@@ -12,7 +12,10 @@ export default function(state = {}, action) {
             return {...state, status: 'error', error: { message: action.payload } };
         
         case LOGOUT:
-            return {...state, status: 'unsigned', token: false}       
+            return {...state, status: 'unsigned', token: false}
+        
+        case RELOGIN_REQUEST:
+            return {...state, status: 'relogin' };
 
 		default:
 			return state;

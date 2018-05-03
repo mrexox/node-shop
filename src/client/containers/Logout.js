@@ -9,7 +9,7 @@ import { logout } from '../actions/loginActions';
 
 const Logout = ( props ) => {
     if (props.isSigned) {
-        props.onLogout();
+        props.onLogout(props.token);
         return (        
             <Redirect to={{
                 pathname: `/${REDIRECT_AFTER_LOGOUT}`
@@ -26,6 +26,7 @@ const Logout = ( props ) => {
 export default connect(
     state => ({
         isSigned: state.auth.status === 'signed',
+        token: state.auth.token
     }),
     dispatch => ({
         onLogout: bindActionCreators(logout, dispatch)
