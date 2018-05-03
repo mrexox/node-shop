@@ -1,7 +1,25 @@
 import fetch from 'cross-fetch';
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT, RELOGIN_REQUEST } from './actionTypes';
 import { URL } from '../Constants';
+import { cartClear } from './cartActions';
 
+
+function loginSuccess(data) {
+    return {
+        type: LOGIN_SUCCESS,
+        payload: data
+    };
+}
+
+export function loginError(msg) {
+    console.warn("LOGIN_ERROR", msg);
+    return {
+        type: LOGIN_ERROR,
+        payload: msg
+    };
+}
+
+/* actions with built in dispatch */
 export function loginRequest(data) {
     return (dispatch) => {
         dispatch({
@@ -36,40 +54,27 @@ export function loginRequest(data) {
     };
 }
 
-function loginSuccess(data) {
-    return {
-        type: LOGIN_SUCCESS,
-        payload: data
-    };
-}
-
-export function loginError(msg) {
-    console.warn("LOGIN_ERROR", msg);
-    return {
-        type: LOGIN_ERROR,
-        payload: msg
-    };
-}
 
 export function logout(token) {
-    fetch(`http://${URL}:8080/logout`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ token: token})
-    })
-    .then(res => {
-        
-    });
+    return (dispatch) => {
+        dispatch({
+            type: LOGOUT
+        });
 
-    // TODO: state -> initialState
-
-    return {
-        type: LOGOUT
-    };
+        fetch(`http://${URL}:8080/logout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ token: token})
+        })
+        .then(res => {
+            if (res.status === 200) {
+                dispatch(cartClear());
+            }
+        });
+    }
 }
-
 
 export function ReloginRequest(token) {
     return (dispatch) => {

@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SUBMIT, CART_SUBMIT_SUCCESS, CART_SUBMIT_ERROR } from '../actions/actionTypes';
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SUBMIT, CART_SUBMIT_SUCCESS, CART_SUBMIT_ERROR, CART_CLEAR } from '../actions/actionTypes';
 
 export default function(state = {}, action) {    
     switch(action.type) {
@@ -24,6 +24,9 @@ export default function(state = {}, action) {
 
         case CART_SUBMIT_ERROR:
             return {...state, status: 'error', error: { message: action.payload } }
+
+        case CART_CLEAR:
+            return {...state, status: 'preorder', error: { message: '' }, items: [] }
 
 		default:
 			return state;

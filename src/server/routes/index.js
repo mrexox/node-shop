@@ -36,9 +36,10 @@ module.exports = function(app) {
     );
 
     // Logout
-    app.post('/logout', (req, res, next) => 
-        auth.deleteToken(req.body.token)
-    );
+    app.post('/logout', (req, res, next) => {
+        auth.deleteToken(req.body.token);
+        res.json({status: 'success'});
+    });
 
     // Trying to register new user
     app.post('/register', (req, res, next) => 

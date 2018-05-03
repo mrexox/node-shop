@@ -1,0 +1,50 @@
+/* cart wrapper */
+.cart_wrapper {
+    width: 480px;
+    margin: auto;
+    padding: 16px;
+    text-align: center;
+}
+
+/* button */
+.cart_wrapper .btn {
+    padding: 4px;
+    margin: 24px;
+    width: 160px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #2DA292;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart_wrapper input.btn:hover {
+    background-color: #2DA292;
+    color: white;
+}
+
+.cart_wrapper .wait_btn {
+    padding: 0px;
+    cursor: auto;
+    background-size: contain;
+}
+
+.cart_wrapper button img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: -10px;
+    top: -4px;
+    position: relative;
+}
+
+/* error msg */
+.cart_wrapper .error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    border: 1px solid;
+    margin: 10px;
+    margin-bottom: -10px;
+    padding: 15px;
+
+  }
+  

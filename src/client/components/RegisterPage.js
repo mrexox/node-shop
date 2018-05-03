@@ -50,7 +50,7 @@ class RegisterPage extends Component {
                         {errorMsg}
                     </div>
                     <div className="success" hidden={!isRegistered}> 
-                        You have been successfully registered!
+                        <h2>You have been successfully registered!</h2>
                     </div>
                     <div hidden={isRegistered}>
                     <p>

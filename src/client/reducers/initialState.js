@@ -24,7 +24,8 @@ export default {
         items: [],
         error: {
             message: ''
-        }
+        },
+        order_id: false
     }
 };
 
