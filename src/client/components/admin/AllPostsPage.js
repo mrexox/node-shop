@@ -1,7 +1,8 @@
 import React from 'react';
+import AdminPostList from 'client/containers/admin/AdminPostList';
 
-const AllPostsPage = () => (
-	<div>All page and Nothing!</div>
+const AllPostsPage = ({match: {params}}) => (
+	<AdminPostList />
 );
 
 export default AllPostsPage;

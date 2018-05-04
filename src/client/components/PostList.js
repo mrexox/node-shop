@@ -4,13 +4,14 @@ import Post from './Post';
 import '../styles/PostList.css';
 
 // Every Post has all attributes given in props
-const PostList = ({ posts, likePost }) => (
+const PostList = ({ posts, likePost, onPostClick }) => (
 	<div className="post-list">
 	  {posts.length ? posts.map((post, index) => (
 		  <Post
 			key={index}
 			{...post}
-			likePost={() => likePost(post.id)} />
+			likePost={() => likePost(post.id)}
+			onPostClick={() => onPostClick(post)}/>
 	  ))
        : 'No posts'
 

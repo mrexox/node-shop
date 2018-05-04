@@ -1,6 +1,6 @@
 import React from 'react';
-import PostFilter from '../containers/PostFilter';
-import FilteredPostList from '../containers/FilteredPostList';
+import PostFilter from 'client/containers/PostFilter';
+import FilteredPostList from 'client/containers/FilteredPostList';
 
 const HomePage = ({ match: { params } }) => (
 	<div>

@@ -27,6 +27,9 @@ const mapDispatchToProps = dispatch => {
 	return {
 		likePost: id => {
 			dispatch(likePost(id))
+		},
+		onPostClick: post => {
+			// TODO 	Add it to cart
 		}
 	};
 }

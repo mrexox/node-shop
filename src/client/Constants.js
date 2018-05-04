@@ -16,7 +16,6 @@ export const ALL_POSTS = 'all-posts';
 export const ORDERS = 'orders';
 export const MESSAGES = 'messages';
 
-
 // Redirects
 export const REDIRECT_AFTER_LOGIN = HOME;
 export const REDIRECT_AFTER_LOGOUT = HOME;
