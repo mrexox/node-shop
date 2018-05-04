@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import MenuItem from '../components/MenuItem';
+import MenuItem from 'client/components/MenuItem';
 import { ALL_POSTS, ORDERS, MESSAGES } from '../Constants';
 import '../styles/Menu.css';
 

@@ -1,6 +1,7 @@
 import { FETCH_POSTS_END,
 	     FETCH_POSTS_START,
 	     FETCH_POSTS_ERROR,
+			 ADMIN_CHOSE,
 		 LIKE_POST } from '../actions/actionTypes';
 //import { fetchPosts } from '../actions/postsActions'; // specify post actions
 
@@ -14,10 +15,8 @@ export default function posts(state={}, action) {
 					 * Post:  { .., likes: 15, ... }
 					 * TODO What about sending an AJAX to a server?
 					 */
-					return Object.assign({}, post, {
-						// parseInt(number, radix)
-						likes: (parseInt(post.likes, 10)+1).toString()
-					});
+					// parseInt(number, radix)
+					return {...post, likes: (parseInt(post.likes, 10)+1).toString() };
 				}
 				return post;
 			});
@@ -27,7 +26,7 @@ export default function posts(state={}, action) {
 			return Object.assign({}, {
 				data: action.posts,
 				isFetching: false
-			}); 
+			});
 		case FETCH_POSTS_START:
 			return Object.assign({}, state, {isFetching: true});
 		case FETCH_POSTS_ERROR:

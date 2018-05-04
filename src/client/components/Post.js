@@ -5,8 +5,9 @@ import ImageList from './ImageList';
 import { SEARCH } from '../Constants';
 import '../styles/Post.css';
 
-const Post = ({ id, likes, imageList, htmlText, tags, likePost }) => (
-	<div className="post">
+const Post = ({ id, likes, imageList, htmlText, tags, likePost, onPostClick }) => (
+	<div className="post"
+			 onClick={onPostClick} >
 	  <ImageList images={imageList} />
 	  <div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
 	  <span className="post__likes" onClick={likePost}>{likes} likes</span>

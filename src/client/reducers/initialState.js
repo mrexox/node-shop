@@ -26,7 +26,7 @@ export default {
             message: ''
         },
         order_id: false
-    }
+    },
 };
 
 /*

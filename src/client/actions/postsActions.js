@@ -4,6 +4,7 @@ import { URL } from '../Constants';
 import { FETCH_POSTS_END,
 		 FETCH_POSTS_START,
 		 FETCH_POSTS_ERROR,
+		 ADMIN_CHOSE,
 		 LIKE_POST } from './actionTypes';
 
 export function requestPosts() {
@@ -29,5 +30,9 @@ export function fetchPosts() {
 }
 
 export function likePost(id) {
+	return {type: LIKE_POST, id};
+}
+
+export function likePostAdmin(id) { // TODO заменить на безусловное увеличивание лайков
 	return {type: LIKE_POST, id};
 }
