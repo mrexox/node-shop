@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import { likePost } from '../actions/postsActions';
-import PostList from '../components/PostList';
+import { likePost } from 'client/actions/postsActions';
+import { cartAddItem } from 'client/actions/cartActions';
+import PostList from 'client/components/PostList';
 
 function escapeRegExp(string){
 	return string.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
@@ -29,7 +30,7 @@ const mapDispatchToProps = dispatch => {
 			dispatch(likePost(id))
 		},
 		onPostClick: post => {
-			// TODO 	Add it to cart
+			dispatch(cartAddItem(post.id))
 		}
 	};
 }

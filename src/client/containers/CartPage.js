@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { cartSubmit, cartSubmitError, cartClear } from 'client/actions/cartActions';
-import CartList from 'client/containers/cart/CartList';
+import { cartSubmit, cartSubmitError, cartClear, cartAddItem, cartRemoveItem } from 'client/actions/cartActions';
 import LoadingImage from 'client/img/Loading.gif';
 import 'client/styles/Cart.css';
 
@@ -13,12 +12,11 @@ class CartPage extends Component {
 		else if (token === false) onError('You should login, to submit order.');
 		else onSubmit(items, token);
 	}
-	clearCart() {
-		this.props.onCartClear();
-	}
 
 	render() {
-		const { items, isError, inProcess, errorMsg, isOrderCreated, order_id } = this.props;
+		const { items, isError, inProcess, 
+			errorMsg, isOrderCreated, order_id, 
+			onRemoveItem, onAddItem, onCartClear } = this.props;
 
 		return (
 			<div className="cart_wrapper">
@@ -28,15 +26,39 @@ class CartPage extends Component {
 					<input
 						type="button"
 						value="START A NEW ORDER"
-						onClick={this.clearCart.bind(this)}
+						onClick={() => onCartClear()}
 						className="btn"
 						id="newOrderBtn"
 					/>    
 				</div>
 					
 				<div className="cart_preorder" hidden={isOrderCreated}>
-
-					<CartList items={items}/>
+					<div className="cart_list">
+						{
+							items.length ? items.map(({id, count, imageList, title}) => (
+								<div key={id} className="cart_item">
+									<img src={imageList[0].url} alt={title} />
+									<h3 className="cart_item_title">{title}</h3>									
+									<div className="cart_item_count" item_id={id}>
+									<input
+										type="button"
+										className="btn cnt_btn"
+										value="-"
+										onClick={() => onRemoveItem(id)}
+									/>
+									{count}
+									<input
+										type="button"
+										className="btn cnt_btn"
+										value="+"
+										onClick={() => onAddItem(id)}
+									/>
+									</div>
+								</div>
+							))
+							: (<p>Cart is empty</p>)
+						}
+					</div>
 
 					<div className="error" hidden={!isError}>
 						{errorMsg}
@@ -62,7 +84,9 @@ class CartPage extends Component {
 
 export default connect(
     state => ({
-		items: state.cart.items,
+		items: state.cart.items.map((item) => {
+			return {...item, ...state.posts.data.filter(({id}) => id == item.id)[0]}
+		}),
 		inProcess: state.cart.status === 'request',
 		isOrderCreated: state.cart.status === 'order',
 		isError: state.cart.status === 'error',
@@ -73,6 +97,8 @@ export default connect(
     dispatch => ({
 		onSubmit: bindActionCreators(cartSubmit, dispatch),
 		onError: (msg) => dispatch(cartSubmitError(msg)),
-		onCartClear: () => dispatch(cartClear())
+		onCartClear: () => dispatch(cartClear()),
+		onAddItem: (id) => dispatch(cartAddItem(id)),
+		onRemoveItem: (id) => dispatch(cartRemoveItem(id))
     })
 )(CartPage);
