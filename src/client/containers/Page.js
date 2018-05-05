@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import '../styles/Page.css';
+import 'client/styles/Page.css';
 import { ADMIN, CONTACT_US, LOGIN_URL,
 		 REGISTER_URL, LOGOUT_URL, CART_URL,
-		 HOME, ABOUT, SEARCH } from '../Constants';
-import HomePage from '../components/HomePage';
-import AboutPage from '../components/AboutPage';
-import MainMenu from './MainMenu';
-import LoginPage from '../components/LoginPage';
-import Logout from './Logout';
-import RegisterPage from '../components/RegisterPage';
-import AdminPage from '../components/AdminPage';
-import AdminMenu from '../components/AdminMenu';
-import CartPage from './CartPage';
+		 HOME, ABOUT, SEARCH } from 'client/Constants';
+import HomePage from 'client/components/HomePage';
+import AboutPage from 'client/components/AboutPage';
+import MainMenu from 'client/containers/MainMenu';
+import LoginPage from 'client/components/LoginPage';
+import Logout from 'client/containers/Logout';
+import RegisterPage from 'client/components/RegisterPage';
+import AdminPage from 'client/components/AdminPage';
+import AdminMenu from 'client/components/AdminMenu';
+import CartPage from 'client/containers/cart/CartPage';
 
 
 /*

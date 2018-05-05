@@ -4,10 +4,10 @@ import { URL } from '../Constants';
 import { cartClear } from './cartActions';
 
 
-function loginSuccess(data) {
+export function loginSuccess(token) {
     return {
         type: LOGIN_SUCCESS,
-        payload: data
+        payload: token
     };
 }
 
@@ -17,6 +17,34 @@ export function loginError(msg) {
         type: LOGIN_ERROR,
         payload: msg
     };
+}
+
+export function reLoginRequest(token, callback) {
+    fetch(`http://${URL}:8080/reauthenticate`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({token: token})
+    })
+    .then(res => {
+        if (res.status >= 400) {
+            callback({status: 'error', message: 'Bad response from server, try again later'});
+        }
+        else {
+            res.json().then(json => {
+                if (!json.token) {
+                    callback({status: 'error', message: 'Invalid old token'});
+                }
+                else callback({status: 'success', token: json.token});
+            });
+        }
+    })
+    .catch(error => callback({status: 'error', message: 'Oops..'}));
+
+    return {
+        type: RELOGIN_REQUEST
+    }
 }
 
 /* actions with built in dispatch */
@@ -74,35 +102,4 @@ export function logout(token) {
             }
         });
     }
-}
-
-export function ReloginRequest(token) {
-    return (dispatch) => {
-        dispatch({
-            type: RELOGIN_REQUEST,
-            payload: token
-        });
-
-        fetch(`http://${URL}:8080/reauthenticate`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({token: token})
-        })
-        .then(res => {
-            if (res.status >= 400) {
-                dispatch(loginError("Bad response from server, try again later."));
-            }
-            else {
-                res.json().then(json => {
-                    if (!json.token) {
-                        dispatch(loginError("Invalid old token."));
-                    }
-                    else dispatch(loginSuccess(json.token));
-                });
-            }
-        })
-		.catch(error => dispatch(loginError("Wops...")));
-    };
 }

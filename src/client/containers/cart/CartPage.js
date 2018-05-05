@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { cartSubmit, cartSubmitError, cartClear } from '../actions/cartActions';
-import LoadingImage from '../img/Loading.gif';
-import '../styles/Cart.css';
+import { cartSubmit, cartSubmitError, cartClear } from 'client/actions/cartActions';
+import CartList from 'client/containers/cart/CartList';
+import LoadingImage from 'client/img/Loading.gif';
+import 'client/styles/Cart.css';
 
 class CartPage extends Component {
 	handleSubmit() {
-		const { cart, token, onError, onSubmit } = this.props;
-		if (cart.length === 0) onError('Can not submit empty cart.');
+		const { items, token, onError, onSubmit } = this.props;
+		if (items.length === 0) onError('Can not submit empty cart.');
 		else if (token === false) onError('You should login, to submit order.');
-		else onSubmit(cart, token);
+		else onSubmit(items, token);
 	}
 	clearCart() {
 		this.props.onCartClear();
 	}
 
 	render() {
-		const { isError, inProcess, errorMsg, isOrderCreated, order_id } = this.props;
+		const { items, isError, inProcess, errorMsg, isOrderCreated, order_id } = this.props;
 
 		return (
 			<div className="cart_wrapper">
@@ -34,9 +35,9 @@ class CartPage extends Component {
 				</div>
 					
 				<div className="cart_preorder" hidden={isOrderCreated}>
-					<div className="cart">
-						// CART ELEMENTS
-					</div>
+
+					<CartList items={items}/>
+
 					<div className="error" hidden={!isError}>
 						{errorMsg}
 					</div>
@@ -61,7 +62,7 @@ class CartPage extends Component {
 
 export default connect(
     state => ({
-		cart: state.cart.items,
+		items: state.cart.items,
 		inProcess: state.cart.status === 'request',
 		isOrderCreated: state.cart.status === 'order',
 		isError: state.cart.status === 'error',

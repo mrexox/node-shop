@@ -26,7 +26,7 @@ export default function(state = {}, action) {
             return {...state, status: 'error', error: { message: action.payload } }
 
         case CART_CLEAR:
-            return {...state, status: 'preorder', error: { message: '' }, items: [] }
+            return {...state, status: 'preorder', error: { message: '' }, items: [], order_id: false }
 
 		default:
 			return state;

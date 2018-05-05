@@ -1,8 +1,8 @@
 import fetch from 'cross-fetch';
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SUBMIT, 
-    CART_SUBMIT_SUCCESS, CART_SUBMIT_ERROR, CART_CLEAR } from './actionTypes';
-import { URL } from '../Constants';
-import { ReloginRequest } from './loginActions';
+    CART_SUBMIT_SUCCESS, CART_SUBMIT_ERROR, CART_CLEAR } from 'client/actions/actionTypes';
+import { URL } from 'client/Constants';
+import { reLoginRequest, loginSuccess } from 'client/actions/loginActions';
 
 export function cartAddItem(id) {
     return {
@@ -66,10 +66,16 @@ export function cartSubmit(cartItems, token) {
                         dispatch(cartSubmitSuccess(json.order_id));
                     }
                     else {
-                        dispatch(cartSubmitError(json.status));
                         if (json.status === 'Token not valid') {
-                            dispatch(ReloginRequest(token));
+                            dispatch(reLoginRequest(token, res => {
+                                if (res.status === 'success') {
+                                    dispatch(loginSuccess(res.token));
+                                    dispatch(cartSubmit(cartItems, res.token));
+                                }
+                                else dispatch(cartSubmitError(res.message));
+                            }));
                         }
+                        else dispatch(cartSubmitError(json.status));
                     }
                 });
             }
