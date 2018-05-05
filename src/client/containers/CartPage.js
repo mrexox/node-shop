@@ -85,7 +85,7 @@ class CartPage extends Component {
 export default connect(
     state => ({
 		items: state.cart.items.map((item) => {
-			return {...item, ...state.posts.data.filter(({id}) => id == item.id)[0]}
+			return {...item, ...state.posts.data.filter(({id}) => id === item.id)[0]}
 		}),
 		inProcess: state.cart.status === 'request',
 		isOrderCreated: state.cart.status === 'order',
