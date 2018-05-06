@@ -12,7 +12,7 @@ const db = new mariasql({
 });
 
 const scripts = {
-	allPosts : 'SELECT post_id id, title, htmlText, likes FROM post',
+	allPosts : 'SELECT post_id id, title, htmlText, likes, price FROM post',
 	tagsOfPost : 'SELECT name FROM post_tag WHERE post_id = :post_id',
 	imagesOfPost : 'SELECT url FROM post_image WHERE post_id = :post_id',
 	getPassHash : 'SELECT pass_hash, amin_id FROM admin WHERE login = :login',

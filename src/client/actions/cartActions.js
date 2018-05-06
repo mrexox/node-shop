@@ -72,6 +72,9 @@ export function cartSubmit(cartItems, token) {
                                     dispatch(loginSuccess(res.token));
                                     dispatch(cartSubmit(cartItems, res.token));
                                 }
+                                else if (res.message === 'Invalid old token') {
+                                    dispatch(cartSubmitError('Please login again'));
+                                }
                                 else dispatch(cartSubmitError(res.message));
                             }));
                         }

@@ -14,7 +14,7 @@ class CartPage extends Component {
 	}
 
 	render() {
-		const { items, isError, inProcess, 
+		const { items, isError, inProcess,
 			errorMsg, isOrderCreated, order_id, 
 			onRemoveItem, onAddItem, onCartClear } = this.props;
 
@@ -60,6 +60,9 @@ class CartPage extends Component {
 						}
 					</div>
 
+					<div className="total" hidden={!items.length}>
+						Total: {items.reduce((sum, cur) => sum + cur.price * cur.count, 0)} rub
+					</div>
 					<div className="error" hidden={!isError}>
 						{errorMsg}
 					</div>
