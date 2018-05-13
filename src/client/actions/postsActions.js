@@ -4,7 +4,6 @@ import { URL } from '../Constants';
 import { FETCH_POSTS_END,
 		 FETCH_POSTS_START,
 		 FETCH_POSTS_ERROR,
-		 ADMIN_CHOSE,
 		 LIKE_POST } from './actionTypes';
 
 export function requestPosts() {

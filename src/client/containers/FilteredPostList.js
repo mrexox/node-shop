@@ -15,25 +15,21 @@ export const getFilteredPosts = (posts, filter) => {
 	// Finds if any tag matches the filter, given in regexp
 	return posts.filter((p) => (p.tags.find((tag) => tag.match(tagRe))));
 
-}
+};
 
 
-const mapStateToProps = state => {
-	return {
+const mapStateToProps = state => ({
 		posts: getFilteredPosts(state.posts.data, state.postFilter)
-	}
-}
+});
 
-const mapDispatchToProps = dispatch => {
-	return {
+const mapDispatchToProps = dispatch => ({
 		likePost: id => {
-			dispatch(likePost(id))
+			dispatch(likePost(id));
 		},
 		onPostClick: post => {
-			dispatch(cartAddItem(post.id))
+			dispatch(cartAddItem(post.id));
 		}
-	};
-}
+});
 
 // I guess PostList may be used somewhere in an application
 // That's why I need FilteredPostList only for a HomePage
