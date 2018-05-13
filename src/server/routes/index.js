@@ -32,7 +32,8 @@ module.exports = function(app) {
 
     // Reauthenticate if token time has expired
     app.post('/reauthenticate', (req, res, next) => 
-        res.json({token: auth.reGenerateToken(req.body.token)})
+        auth.reGenerateToken(req.body.token, newToken =>
+            res.json({token: newToken}))
     );
 
     // Logout

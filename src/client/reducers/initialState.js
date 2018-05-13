@@ -25,6 +25,7 @@ export default {
         error: {
             message: ''
         },
+        length: 0,
         order_id: false
     },
 };

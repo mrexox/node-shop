@@ -79,25 +79,24 @@ function generateToken(user_id) {
 	let token = utils.hash(Date.now().toString());
 	tokenQueue[user_id] = {token: token, valid: true};
 	setTimeout(() => {
-		// Valid -> false after hour
+		// Valid -> false after 10 min
 		tokenQueue[user_id].valid = false;
-	}, 60*60*60);
+	}, 600000);
 	return token;
 };
 
 /* Get new token if time has expired
  * Public interface.
  */
-function reGenerateToken(oldToken) {
-	tokenQueue.forEach((element, index, arr) => {
-		if (element.token === oldToken) {
-			let newToken = utils.hash(Date.now().toString());
-			arr[index].token = newToken;
-			arr[index].valid = true;
-			return callback(newToken);
-		}
-	});
-	return callback(false);
+function reGenerateToken(oldToken, callback) {
+	let user_id = getUserId(oldToken);
+	if (user_id !== -1) {
+		let newToken = utils.hash(Date.now().toString());
+		tokenQueue[user_id].token = newToken;
+		tokenQueue[user_id].valid = true;
+		callback(newToken);
+	}
+	else callback(false);
 }
 
 /* Check if the token is in there.

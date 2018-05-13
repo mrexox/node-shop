@@ -1,6 +1,7 @@
 const config = require('../config');
 const mariasql = require('mariasql');
 const utils = require('../utils');
+const seed = require('./seed.json');
 const db = new mariasql({
 	host: config.get("database:host"),
 	user: config.get("SHOP_USER"),
@@ -11,14 +12,18 @@ const db = new mariasql({
 
 let inserts = [
 	['INSERT INTO admin (login, pass_hash) VALUES (?, ?)', 'admin', utils.hash('password')],
-	['INSERT INTO admin (login, pass_hash) VALUES (?, ?)', 'ian', utils.hash('admin')],
-	['INSERT INTO post (post_id, title, htmlText) VALUES (?, ?, ?)', '1', 'Post #1', '<p>New post</p>'],
-	['INSERT INTO post_image (url, post_id) VALUES (?, ?)', 'http://vanimg.s3.amazonaws.com/nature-p-2.jpg', '1'],
-	['INSERT INTO post_image (url, post_id) VALUES (?, ?)', 'http://1.bp.blogspot.com/-2jKK8DeueQk/Tlh-dxq_YEI/AAAAAAAAAY4/RYXOlGzGALA/s1600/Nature-Wallpapers-6.jpg', '1'],
-	['INSERT INTO post_tag (name, post_id) VALUES (?, ?)', 'spring', '1'],
-	['INSERT INTO post_tag (name, post_id) VALUES (?, ?)', 'leaf', '1'],
-	['INSERT INTO post_tag (name, post_id) VALUES (?, ?)', 'nature', '1'],
+	['INSERT INTO admin (login, pass_hash) VALUES (?, ?)', 'ian', utils.hash('admin')]
 ];
+
+seed.posts.forEach(({id, title, htmlText, price, images, tags}) => {
+	inserts.push(['INSERT INTO post (post_id, title, htmlText, price) VALUES (?, ?, ?, ?)', id, title, htmlText, price]);
+	images.forEach((url) => 
+		inserts.push(['INSERT INTO post_image (url, post_id) VALUES (?, ?)', url, id])
+	);
+	tags.forEach((tag) => 
+		inserts.push(['INSERT INTO post_tag (name, post_id) VALUES (?, ?)', tag, id])
+	);
+});
 
 inserts.forEach(function(item, index) {
 	db.query(item[0], item.slice(1), function(err) {

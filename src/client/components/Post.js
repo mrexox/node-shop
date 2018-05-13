@@ -5,11 +5,13 @@ import ImageList from './ImageList';
 import { SEARCH } from '../Constants';
 import '../styles/Post.css';
 
-const Post = ({ id, likes, imageList, htmlText, tags, likePost, onPostClick }) => (
+
+const Post = ({ id, likes, imageList, htmlText, title, tags, likePost, onPostClick }) => (
 	<div className="post"
 			 onClick={onPostClick} >
 	  <ImageList images={imageList} />
-	  <div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}}></div>
+	  <div className="post__title">{title}</div>
+	  <div className="post__text" dangerouslySetInnerHTML={{__html:htmlText}} hidden></div>
 	  <span className="post__likes" onClick={likePost}>{likes} likes</span>
 	  <div className="post__tags">
 		{tags.map((name, index) => (
@@ -34,7 +36,8 @@ Post.propTypes = {
 			url: PropTypes.string.isRequired
 		}).isRequired
 	),
-	likePost: PropTypes.func.isRequired
+	likePost: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired
 };
 
 export default Post;

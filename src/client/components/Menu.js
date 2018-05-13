@@ -29,7 +29,7 @@ const Menu = (props) => {
         </NavLink>
 
         <NavLink to={`/${CART_URL}`} >
-            <MenuItem item={CART_URL} />
+            <MenuItem item={CART_URL} param={props.cart_length}/>
         </NavLink>
 
         <NavLink to={`/${lastMenuItem}`} >
