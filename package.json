@@ -13,7 +13,7 @@
 		"express-session": "^1.15.6",
 		"mariasql": "^0.2.6",
 		"mysql": "^2.15.0",
-		"nconf": "^0.10.0",
+		"nconf": "^0.11.4",
 		"nodemon": "^1.15.1",
 		"promise": "^8.0.1",
 		"prop-types": "^15.6.0",
